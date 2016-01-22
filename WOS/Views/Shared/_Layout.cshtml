@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+ 
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
+	<title>Tool & Die - Work Order Status</title>
+	
+	<!-- Stylesheets -->
+	@*<link rel='stylesheet' href="~/Content/Style2.css">*@
+
+	<!-- Optimize for mobile devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<!-- jQuery & JS files -->
+	
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+	<script src="~/Scripts/script.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/jTable")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jTable")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="http://webexternal/CDN/JS/Utility/jquery.tnc.utility.js"></script>
+
+</head>
+<body>
+ 
+	<!-- TOP BAR -->
+	<div id="top-bar">
+		
+		<div class="page-full-width cf">
+            
+            <img src="~/Images/WOS-logo.png" />
+
+			<ul id="nav" class="fr">
+	
+				@*<li class="v-sep"><a href="#" class="round button dark ic-left-arrow image-left">Go to website</a></li>*@
+				<li class="v-sep"><a href="#" class="round button dark menu-user image-left">Logged in as <strong> @Html.Partial("_LoginPartial")</strong></a>
+					@*<ul>
+						<li><a href="#">My Profile</a></li>
+						<li><a href="#">User Settings</a></li>
+						<li><a href="#">Change Password</a></li>
+						<li>
+                            @Html.ActionLink("Log out", "LogOff", "Account")
+						</li>
+					</ul> *@
+				</li>
+			
+				@*<li><a href="#" class="round button dark menu-email-special image-left">3 new messages</a></li>*@
+				@*<li><a href="#" class="round button dark menu-logoff image-left">Log out</a></li>*@
+				<li>@Html.ActionLink("Log out", "LogOff", "Account", new { }, new { @class = "round button dark menu-logoff image-left" })</li>
+			</ul> <!-- end nav -->
+ 
+					
+			@*<form action="#" method="POST" id="search-form" class="fr">
+				<fieldset>
+                    <legend></legend>
+					<input type="text" id="search-keyword" class="round button dark ic-search image-right" placeholder="Search..." />
+					<input type="hidden" value="SUBMIT" />
+				</fieldset>
+			</form>*@
+ 
+		</div> <!-- end full-width -->	
+	
+	</div> <!-- end top-bar -->
+
+	<!-- HEADER -->
+	<div id="header-with-tabs">
+		
+		<div class="page-full-width cf" style="text-align:left; vertical-align:middle;">
+
+            
+	        
+			<ul id="tabs" class="cb">
+				@*<li><a href="dashboard.html" class="dashboard-tab">Dashboard</a></li>
+				<li><a href="page-full-width.html">Full width page</a></li>
+				<li><a href="page-other.html" class="active-tab">Other page elements</a></li>
+                <li>@Html.ActionLink("W/O Status", "Index", "Home")</li>*@
+                <li>@Html.ActionLink("Check W/O Status", "WoStatus", "Home")</li>
+				<li>@Html.ActionLink("Daily Running", "Daily_ScanReport", "Home")</li>
+                
+				<li>@Html.ActionLink("Rack Mold", "Rack_Mold", "Home")</li>
+                <li>@Html.ActionLink("Rack Part", "Rack_Part", "Home")</li>
+                @if (Session["userAdmin"].ToString() == "4")
+                {
+                    <li>@Html.ActionLink("Process Time", "Process_Time", "Home")</li>
+                    <li>@Html.ActionLink("Set User Skill", "UserSkill", "Home")</li>
+                    <li>@Html.ActionLink("Master Skills", "SkillMaster", "Home")</li>   
+                }
+                
+			</ul> 
+            
+            <!-- end tabs -->
+			
+			<!-- Change this image to your own company's logo -->
+			<!-- The logo will automatically be resized to 30px height. -->
+			@*<a href="#" id="company-branding-small" class="fr"><img src="~/Images/NOK-logo.jpg" alt="Blue Hosting" /></a>*@
+			
+		</div> <!-- end full-width -->	
+ 
+	</div> <!-- end header -->
+
+	<!-- MAIN CONTENT -->
+	@*<div id="content">
+
+		@RenderSection("featured", required: false)
+        <section class="page-full-width cf">
+            @RenderBody()
+        </section>
+	</div> <!-- end content -->*@
+    <div id="content">
+        <section class="page-full-width cf">
+            @RenderSection("featured", required: false)
+            @*<h3 style="color:gray;font-family:'Tahoma';font-size:xx-small;">>> @ViewBag.Title</h3>
+		    <div class="side-menu fl">
+				
+			    <h3>Side Menu</h3>
+			    <ul>
+				    <li>@Html.ActionLink("W/O Status", "Index", "Home")</li>
+				    <li>@Html.ActionLink("Daily Running", "Daily_ScanReport", "Home")</li>
+				    <li>@Html.ActionLink("Rack Mold", "Rack_Mold", "Home")</li>
+                    <li>@Html.ActionLink("Rack Part", "Rack_Part", "Home")</li>
+                    <li>@Html.ActionLink("Check W/O Status", "Chk_WO", "Home")</li>
+			    </ul>
+				
+		    </div> <!-- end side-menu -->*@
+			
+		    <div><!--class="side-content fr"-->
+                @RenderBody()
+            </div> <!-- end side-content -->
+		
+	    </section> <!-- end full-width -->
+	</div>
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>&copy; Copyright 2013 <a href="#">System, NOK</a>. All rights reserved.</p>
+		<p><strong>Web Application</strong> by <a href="mailto:monchit@nok.co.th">Monchit W.</a></p>
+	</div> <!-- end footer -->
+ 
+</body>
+</html>

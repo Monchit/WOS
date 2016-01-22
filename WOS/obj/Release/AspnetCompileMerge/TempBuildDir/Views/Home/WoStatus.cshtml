@@ -1,0 +1,379 @@
+﻿<style type="text/css">
+    #divData {
+        width: 100%;
+        height: 600px;
+        overflow-x: auto;
+    }
+
+    #tblResult {
+        border-collapse: collapse;
+        color: black;
+    }
+    #tblResult tr th.boldBorder, #tblResult tr th.thLeftSide {
+        font-size: 0.9em;
+        border: solid 1px black;
+        padding: 5px;
+        background-color: #013c68;
+        color: white;
+    }
+    #tblResult tr td {
+         font-size: 0.7em;
+        border: solid 1px black;
+        padding: 3px;
+    }
+    #divLegend {
+        line-height: 25px;
+        display:table-cell;
+        vertical-align: top;
+    }
+    #divLegend tr td {
+        padding: 5px;
+    }
+    .box {
+        width: 20px;
+        height: 20px;
+        border: 1px solid brown;
+        display: inline-block;
+        zoom:1;
+        margin-top: 5px;
+    }
+    .bg-wait-start {
+        background-color: #52d7fb;
+    }
+    .bg-in-process {
+        background-color: #f1f30e;
+    }
+    .bg-finished {
+        background-color: #22a90e;
+    }
+    .bg-danger {
+        color: white;
+        font-weight: bold;
+        background-color: red !important;
+    }
+    .bgdata {
+        background-color: #f2f2f2;
+    }
+    .progress-bar {
+        background-color: lime;
+    }
+
+    .boldBorder {
+        border: 2px solid black !important;
+        width: 130px;
+        overflow: hidden;
+        display: inline-block;
+        white-space: nowrap;
+    }
+    .cell-progress {
+        padding: 0 !important;
+        line-height: 25px;
+    }
+    .cellGap {
+        background-color: none !important;
+        border: none !important;
+        line-height: 1px;
+        width: 20px;
+        padding: 0;
+        margin: 0;
+    }
+    .thLeftSide {
+        width: 100px;
+        white-space: nowrap;
+    }
+    table#tblResult { 
+        table-layout: fixed;
+    }
+    .hide {
+        display: none;
+    }
+    .text-bold {
+        font-weight: bold;
+    }
+    .text-italic {
+        font-style: italic;
+    }
+    .text-center {
+        text-align: center;
+    }
+
+    .ui-progressbar {
+        position: relative;
+    }
+    .progress-label {
+        text-align: center;
+        font-size: 40px;
+        color: #3F4551;
+        font-weight: bold;
+        text-shadow: 1px 1px 0 #fff;
+        padding-top:20px;
+    }
+    ul li.ui-menu-item {
+        list-style-type: none;
+    }
+    ul li.ui-menu-item a.ui-corner-all {
+        display: block;
+        font-size: 0.8em;
+        font-weight: normal;
+        line-height: 1.5;
+        min-height: 0;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .ui-datepicker {
+        font-size: 12px !important;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        $(".calendar").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true
+        });
+
+        var progressbar = $("#progressbar"),
+      progressLabel = $(".progress-label");
+
+        progressbar.progressbar({
+            value: false,
+            change: function () {
+                progressLabel.text(progressbar.progressbar("value") + "%");
+            },
+            complete: function () {
+                progressLabel.text("Complete!");
+            }
+        });
+
+        $("#btnSearch").click(function () {
+            /*if ($("#txtMainJob").val() == '') {
+                window.alert("Please Fill in Main Job NO");
+                return false;
+            }
+            else {*/
+            $.ajax({
+                url: "@Url.Action("GetWoStatus", "Home")",
+                dataType: "json",
+                data: $("#frmSearch").serialize(),
+                beforeSend: function () {
+                    $("#divResult").hide();
+                    $("#divNotFound").hide();
+                    $("#imgLoading").show();
+                },
+                success: function (data) {
+                    if (data != 0) {
+                        var str = "", strHead = "<th class='thLeftSide'>Main Job</th><th class='thLeftSide'>Sub Job</th><th class='thLeftSide'>Ref. Sub W/O</th><th class='thLeftSide'>Total Process</th><th class='thLeftSide'>Progressive</th>";
+                        var percent, process;
+                        // Processes
+                        var maxProcessCount = 0;
+                        // Reset Loading Progressive
+                        progressbar.progressbar("value", 0);
+                        // For Total Percent
+                        var totalPercent = 0.0;
+                        // Today Int
+                        var today = parseInt("@DateTime.Now.ToString("yyyyMMdd")") - 5430000;
+
+                        for (var i = 0; i < data.length; i++) {
+
+                            str += "<tr><td class='cellGap'>&nbsp;</td></tr>";
+                            str += "<tr>";
+
+                            // Main Job
+                            str += "<td class='bgdata'>" + data[i].main_job_no + "</td>";
+                            // Sub Job
+                            str += "<td class='bgdata text-bold'><a target='_blank' href='@Url.Action("Chk_WO", "Home")?mainjob=" + $.trim(data[i].main_job_no) + "&subjob=" + $.trim(data[i].sub_job_no) + "'>" + data[i].sub_job_no + "</a></td>";
+                            // Ref. Sub W/O
+                            str += "<td class='bgdata'>" + data[i].ref_sub_workorder + "</td>";
+                            // Total Process
+                            str += "<td class='bgdata'>" + (data[i].process[0].marking_step > 0 ? data[i].process.length : $.digits(0, { decimal: 2 })) + "</td>";
+
+                            var processCompCount = 0;
+                            var danger = false;
+                            // Processes
+                            var strProcess = '';
+                            for (var j = 0; j < data[i].process.length; j++) {
+
+                                if (data[i].process[j].marking_step > 0) {
+                                    var cal = today - data[i].process[j].start_date;
+                                    if (data[i].process[j].process_status == "D" && (cal > 5)) {
+                                        danger = true;
+                                    }
+
+                                    strProcess += "<td class='cellGap'></td>";
+                                    strProcess += "<td class='boldBorder " + (data[i].process[j].process_status == "Y" ? "bg-finished" : (data[i].process[j].process_status == "D" ? (!danger ? "bg-in-process" : "bg-danger") : "bg-wait-start")) + "'>" + ($.trim(data[i].process[j].proc_name).length > 23 ? data[i].process[j].proc_name.substring(0, 22) + ".." : data[i].process[j].proc_name) + "</td>";
+
+                                    if (data[i].process[j].process_status == "Y") {
+                                        processCompCount++;
+                                    }
+                                }
+                            }
+
+                            var compPercent = (processCompCount / data[i].process.length) * 100;
+                            // Progressive
+                            str += "<td class='bgdata cell-progress'><div class='progress-bar" + (danger == true ? " bg-danger" : "") + "' style='width: " + (data[i].process.length == 0 ? 0 : compPercent) + "%'>" + (data[i].process.length == 0 ? $.digits(0, { decimal: 2 }) : $.digits(compPercent, { decimal: 2 })) + "%</div></td>";
+
+                            str += strProcess;
+
+                            str += "</tr>";
+
+                            // 
+                            totalPercent += parseFloat(compPercent);
+                            maxProcessCount = data[i].process.length > maxProcessCount ? data[i].process.length : maxProcessCount;
+                        }
+
+                        // Process Header
+                        for (var i = 1; i <= maxProcessCount; i++) {
+                            strHead += "<th class='cellGap'></th>";
+                            strHead += "<th class='boldBorder'>Process" + i + "</th>";
+                        }
+
+                        $("#divDataCount").text("Found: " + data.length + " records, Average Progressive: " + (Math.round((totalPercent / data.length) * 100) / 100) + "%");
+
+                        $("#tblResult").find("tbody").children().remove();
+                        $("#tblResult").find("tbody").append(str);
+
+                        $("#tblResult").find("thead").children().first().children().remove();
+                        $("#tblResult").find("thead").children().first().append(strHead);
+
+                        $("#divNotFound").hide();
+                        $("#divResult").fadeIn(
+                            function () {
+                                $('html, body').animate({
+                                    scrollTop: $("#divLegend").offset().top
+                                }, 500);
+                            });
+                    }
+                    else
+                    {
+                        $("#divNotFound").show();
+                        $("#divResult").hide();
+                    }
+                    $("#imgLoading").hide();
+                }
+            });
+            //}
+        });
+
+        $("#txtSubWO").autocomplete({
+            source: "@Url.Action("GetSubWO", "Home")",
+            minLength: 2
+        });
+
+        $("#btnSubWO").click(function () {
+            if ($("#txtSubWO").val() != '') {
+                $.get("@Url.Action("GetMainJobNo", "Home")", "refSubWO=" + $("#txtSubWO").val(), function (data) {
+                    if (data != 0) {
+                        $("#txtMainJob").val(data);
+                    }
+                    else {
+                        alert("Main Job Not Found!!");
+                    }
+                });
+            }
+            else {
+                alert("Please input 'Ref Sub W/O'");
+                $("#txtSubWO").select();
+            }
+        });
+
+        /*$("#btnExport").click(function () {
+            if (!($("#txtMainJob").val() != '' || ($("#txtMainJob").val() == '' && $("#txtDateFrom").val() != '' && $("#txtDateTo").val() != ''))) {
+                window.alert("Please Fill in 'Main Job No' or 'Entry Date'");
+                return false;
+            }
+        });*/
+
+    });
+</script>
+
+<div class="content-module">
+    <div class="content-module-heading cf">
+        <h3 class="fl">Work Order Status</h3>
+        <span class="fr expand-collapse-text" style="display: block;">Click to collapse</span>
+    </div>
+
+    <div id="divMainDetail" class="content-module-main" style="display: block;">
+        <form action="@Url.Action("ExportWOStatus", "Home")" method="post" id="frmSearch">
+            <table style="width:100%">
+                <tr>
+                    <td style="width: 15%">Main Job No:</td>
+                    <td><input type="text" class="normal" id="txtMainJob" name="txtMainJob" /></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ref. Old TD:</td>
+                    <td><input type="text" class="normal" id="txtOldTD" name="txtOldTD" /></td>
+                    <td>Ref. Main W/O:</td>
+                    <td><input type="text" class="normal" id="txtMainWO" name="txtMainWO" /></td>
+                </tr>
+                <tr>
+                    <td>Product Name:</td>
+                    <td>
+                        <select name="selProductType" id="selProductType" class="normal">
+                            <option value="">-- Select --</option>
+                            <option value="Jig">Jig</option>
+                            <option value="Mold">Mold</option>
+                            <option value="Punch-die">Punch-die</option>
+                            <option value="Trimming Knife">Trimming Knife</option>
+                        </select>
+                    </td>
+                    <td>Ref. Sub W/O:</td>
+                    <td>
+                        <input type="text" class="normal" id="txtSubWO" name="txtSubWO" />
+                        <button type="button" id="btnSubWO" class="round blue" style="margin-left: 10px">Get Main Job</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Entry Date:</td>
+                    <td>
+                        <input type="text" class="normal calendar" id="txtDateFrom" name="txtDateFrom" /> -
+                        <input type="text" class="normal calendar" id="txtDateTo" name="txtDateTo" />
+                    </td>
+                    <td colspan="2">
+                        <button type="button" id="btnSearch" class="button round blue image-right ic-search text-upper">Search</button>
+                        <button type="submit" id="btnExport" class="button round blue text-upper" style="margin-left: 10px">Export</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div id="imgLoading" class="text-center hide">
+    <br />
+    <div><img src="@Url.Content("~/Images/Loading.GIF")" /></div>
+    <div class="progress-label">Loading</div>
+</div>
+<div id="divNotFound" class="text-center text-bold hide">Data Not Found.</div>
+
+<div id="divResult" class="hide">
+    <div id="divLegend">
+        <table>
+            <tr>
+                <td class="text-bold">Remark : </td>
+                <td><div class="box bg-finished"></div></td>
+                <td>Finished</td>
+                <td><div class="box bg-in-process"></div></td>
+                <td>During Process</td>
+                <td><div class="box bg-wait-start"></div></td>
+                <td>Waiting Start Process</td>
+                <td><div class="box bg-danger"></div></td>
+                <td>Delay(5 days)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="divDataCount" class="text-bold text-italic"></div><br />
+
+    <div id="divData">
+    
+    <table id="tblResult">
+        <thead>
+            <tr></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    </div>
+</div>

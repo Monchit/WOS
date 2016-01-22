@@ -1,0 +1,338 @@
+﻿@{
+    ViewBag.Title = "Rack Mold";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+    function CreateGridRackMold(data) {
+        $("#divGridRackMold").html('<table id="grid_rackmold"></table><div id="pager_rackmold"></div>');
+
+        jQuery("#grid_rackmold").jqGrid({
+            // url: '@Url.Action("CreateGridRackMold","Home")?' + (typeof data === "undefined" ? "" : data) /*+ '&productcode=' + (typeof data === "undefined" ? "" : data)*/,
+            url: '@Url.Action("CreateGridRackMold","Home")?' + data,
+            datatype: 'json',
+            mtype: 'POST',
+            colNames: ['Status', 'Rack No.', 'Main Job', 'Sub Job', 'Item', 'Update Date', 'Update User', '', ''],
+
+            colModel: [
+                { name: 'status_use', index: 'status_use', align: 'center', sortable: true, width: '80px' },
+                { name: 'rack_no', index: 'rack_no', align: 'center', sortable: true, width: '150px'  },          
+                { name: 'main_job_no', index: 'main_job_no', align: 'center', sortable: true },
+                { name: 'sub_job_no', index: 'sub_job_no', align: 'center', sortable: true, width: '80px'  },
+                { name: 'item', index: 'item', align: 'left', sortable: true },                
+                { name: 'update_date', index: 'update_date', align: 'center', sortable: true, width: '100px'  },
+                { name: 'update_user', index: 'update_user', align: 'left', sortable: true, width: '80px' },
+                { name: '', index: '', align: 'center', sortable: true, width: '80px' },
+                { name: '', index: '', align: 'center', sortable: true, width: '50px' },
+            ],
+            pager: jQuery('#pager_rackmold'),
+            rowNum: 20,
+            rowList: [5, 10, 20, 50, 100],
+            autowidth: true,
+
+            //width: 500,
+            height: 'auto',
+            sortname: 'rack_no',
+            sortorder: "desc",
+            viewrecords: true,
+            rownumbers: true,
+            rownumWidth: '20px',
+            caption: 'Rack Mold',
+            ajaxSelectOptions: { cache: false },
+            //gridview:true,
+            //loadonce: false,
+            scrollOffset: 0
+        });
+    }
+
+    $(function () {
+        CreateGridRackMold(); // On page load                 // Rack Mold 
+
+        //$("a.lnkItem").live("click", function () {
+        //    var ItemCode = $(this).parent().attr("title");
+
+        //    $("#hidden").val(ItemCode);
+        //    $("#divLabelBox").fadeIn();
+        //    //alert(ItemCode);
+        //    CreateGridLabelBox(ItemCode);
+        //});
+    });
+
+    $(document).ready(function () {
+
+
+       
+
+        $(document).on("click", "a.lnkPrintQR", function () {
+
+            $("#qrcode").children().remove();
+            $("#qrcode").append("<img src='@Url.Action("BarcodeImage", "Home")?racknum=" + $(this).attr("data-rack") + "' />");
+            $("#imgdownload").attr('href', '@Url.Action("BarcodeImage", "Home")?racknum=' + $(this).attr("data-rack"));
+            $("#lblRackNumber").text($(this).attr("data-rack"));
+            $("#dialog-QR").dialog("open");
+            return false;
+        });
+
+        $("#dialog-QR").dialog({
+            autoOpen: false,
+            resizable: false,
+            height: 400,
+            modal: true,
+            buttons: {
+               @* "Print": function () {
+                    $(this).attr('href', '@Url.Action("BarcodeImage", "Home")?racknum=' + $(this).attr("data-rack"));
+                },*@
+                Close: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+
+        $("#txtRackMDNo").keydown(function (event) {                 // --> Check IsNumeric of Qty textbox in dialog form
+            // Allow: backspace, delete, tab, escape, and enter
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
+                // Allow: Ctrl+A
+                (event.keyCode == 65 && event.ctrlKey === true) ||
+                // Allow: home, end, left, right
+                (event.keyCode >= 35 && event.keyCode <= 39) || (event.keyCode == 110)) {
+                // let it happen, don't do anything
+                return;
+            }
+            else {
+                // Ensure that it is a number and stop the keypress
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) || $(this).val().length > 6)  {
+                    event.preventDefault();
+                }
+            }
+        });
+
+        $(document).on("click", "a.lnkDel", function () {
+
+            $("#lblDelrack").text($(this).attr("data-rack"));
+
+            $("#dialog-delete").dialog("open");
+
+            return false;
+        });
+
+        $("#dialog-delete").dialog({
+            autoOpen: false,
+            resizable: false,
+            height: 200,
+            modal: true,
+            buttons: {
+                "Yes": function () {
+                    $.post("@Url.Action("Delete_RackMD", "Home")", "rack=" + $("#lblDelrack").text() + "&user=@Session["userInfo"].ToString()", function (data) {
+
+                        if (data != 0) {
+
+                            alert("Delete Complete !");
+
+                            $("#dialog-delete").dialog("close");
+                            CreateGridRackMold();
+                        }
+                        else {
+
+                            alert("คุณไม่สามารถลบ Rack นี้ออกได้ กรุณาติดต่อ admin");
+                            $("#dialog-delete").dialog("close");
+                        }
+                    });
+                },
+                No: function () {
+                    $(this).dialog("close");
+                }
+            }
+         });
+
+        $(document).on("click", "a.lnkEdit", function () {
+
+            $("#lblrack").text($(this).attr("data-rack"));
+
+            $("#dialog-clear").dialog("open");
+
+            return false;
+        });
+
+        $("#dialog-clear").dialog({
+            autoOpen: false,
+            resizable: false,
+            height: 200,
+            modal: true,
+            buttons: {
+                "Yes": function () {
+                    $.post("@Url.Action("Clear_RackMD", "Home")", "rack=" + $("#lblrack").text() + "&user=@Session["userInfo"].ToString()", function (data) {
+
+                        if (data != 0) {
+
+                            alert("Clear Rack Complete !");
+
+                            $("#dialog-clear").dialog("close");
+                            CreateGridRackMold();
+                        }
+                        else {
+
+                            alert("Empty rack !");
+                            $("#dialog-clear").dialog("close");
+                        }
+                    });
+                },
+                No: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $("#btnSearchRackMold").click(function () {
+
+            var seldata;
+            var rack = $("#txtRackMold").val();
+           
+            seldata = "rack=" + rack;
+
+            $("#divGridRackMold").fadeIn()
+            CreateGridRackMold(seldata);
+        });
+
+        $("#insert_rackmold").click(function () {
+
+           
+           
+            $.get("@Url.Action("GetMax_RackMold", "Home")", function (data) {
+
+                if (data != 0) {
+
+                    $("#txtRackMDNo").val(data);
+                    $("#dialog-insertRackMD").dialog("open");
+
+                    return false;
+                }
+            });
+        });
+
+        $("#dialog-insertRackMD").dialog({
+            autoOpen: false,
+            resizable: false,
+            height: 250,
+            modal: true,
+            buttons: {
+                "Submit": function () {
+
+                    if ($("#txtRackMDNo").val() != "") {
+
+                        $.post("@Url.Action("Insert_RackMD", "Home")", "rack=" + $("#txtRackMDNo").val() + "&user=@Session["userInfo"].ToString()", function (data) {
+
+                            if (data != 0) {
+
+                                alert("Insert Complete !");
+
+                                $("#dialog-insertRackMD").dialog("close");
+                                CreateGridRackMold();
+                            }
+                            else {
+
+                                alert("Rack ซ้ำ !!! กรุณาใส่อีกครั้ง");
+                            }
+                        });
+                    }
+                    else {
+
+                        alert("กรุณาใส่ Rack No. !");
+                        $("#txtRackMDNo").focus();
+                    }                  
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            }
+         });
+    });
+
+</script>
+
+<section>
+			
+				<div class="content-module">
+				
+					<div class="content-module-heading cf">
+					
+						<h3 class="fl">RACK MOLD</h3>
+						<span class="fr expand-collapse-text">Click to collapse</span>
+						<span class="fr expand-collapse-text initial-expand">Click to expand</span>
+					
+					</div> <!-- end content-module-heading -->
+					
+					
+					<div class="content-module-main">
+                        
+						<table style="width:100%" >
+                                <tr>
+                                    <td style="width:2%"></td>
+                                    
+                                    <td style="width:20%;font-size:smaller;" >Rack Mold No. : <br /><input type="text" id="txtRackMold" /></td>
+                                    <td><input type="button"  id="btnSearchRackMold" value="Search"  class="button round blue image-right ic-search text-upper"  /></td>
+                                    <td style="text-align:right;"><a href="#" id="insert_rackmold" class="button round blue image-right ic-add text-upper" >ADD RACK</a></td>
+                                </tr>
+							</table>
+                        
+                        <div class="content-module-main" id="divGridRackMold"></div>
+					<p style="text-align:right;"><img src="~/Images/rack-status.png" /></p>
+					</div> <!-- end content-module-main -->
+				
+				</div> <!-- end content-module -->
+    </section>
+
+<div id="dialog-insertRackMD" title="ADD">
+
+    <form>
+        <fieldset>
+            <legend></legend>
+            <p>
+                <br />
+                <label for="simple-input">Rack Number =</label>
+                RMOLD&nbsp<input type="text" id="txtRackMDNo" class="round default-width-input" style="width:65px;text-transform:uppercase;" />
+            </p>
+        </fieldset>
+    </form>
+</div>
+
+<div id="dialog-clear" title="Clear">
+    <form>
+        <fieldset>
+            <legend></legend>
+            <p>
+                คุณต้องการเคลียร์ Rack: <span id="lblrack"></span><br />ใช่หรือไม่ ?
+            </p>
+           
+        </fieldset>
+    </form>
+</div>
+
+<div id="dialog-delete" title="Delete">
+    <form>
+        <fieldset>
+            <legend></legend>
+            <p>
+                คุณต้องการลบ Rack: <span id="lblDelrack"></span> นี้ออก<br />ใช่หรือไม่ ?
+            </p>
+           
+        </fieldset>
+    </form>
+</div>
+
+<div id="dialog-QR" title="Generate Barcode">
+    <form style="text-align:center;">
+        <fieldset>
+            <legend></legend>
+    
+         <p id="qrcode"></p>       
+         <span id="lblRackNumber" ></span>
+            <br />
+            <br />
+        <a id="imgdownload" style="font-size:small;color:blue;">Download</a>
+    
+    </fieldset>
+  </form>
+    
+</div>

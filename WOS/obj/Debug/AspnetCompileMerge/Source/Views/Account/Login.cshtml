@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            @*$("#login-form").submit(function () {
+
+                var obj = new Object();
+                obj.username = $("#username").val();
+                obj.password = $("#password").val();
+               
+                $("#error").children().remove();
+                $.post("@Url.Action("Login","Account")", obj, function (data) {
+
+                    if (data == "1") {
+                        var url = '@Url.Action("WoStatus", "Home")';
+                        window.location.replace(url);
+                    }
+                    else {
+                        $("#error").append("<div>*** รหัสหรือพาสเวิดไม่ถูกต้อง <br/>*** หรือคุณไม่ได้รับสิทธิ์ในการเข้าใช้งานระบบ !!!</div>");
+                    }
+                });
+
+                return false;
+            });*@
+        });
+        
+    </script>
+}
+
+<section>
+    <form action="@Url.Action("Signin","Account")" method="POST" id="login-form" name="login-form">
+		<div id="error" style="color:red;font-family:Arial;font-size:smaller;"></div>
+        <br />
+			<fieldset>
+                <legend></legend>
+				<p>
+					<label for="login-username">Employee ID</label>
+                    <input type="text" id="username" name="username" class="round full-width-input" autofocus />
+				</p>
+				<p>
+					<label for="login-password">password</label>
+					<input type="password" id="password" name="password" class="round full-width-input" />
+				</p>
+                <button type="submit" id="btnLogin" class="button round blue image-right ic-right-arrow">LOG IN</button>
+			</fieldset>
+ 
+			<br/><div class="information-box round"><!--Just click on the "LOG IN" button to continue, no login information required.-->
+                    If you don't have permission, please request user login via <a href="http://webexternal/SSR/index.php/user/login" target="_blank">SSR system</a>.
+			     </div>
+ 
+		</form>
+</section>
+
+
+
+
+
+	
+	
+	
+	

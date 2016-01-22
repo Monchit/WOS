@@ -1,0 +1,46 @@
+﻿@model WOS.Models.td_comment
+<link href="~/Content/Bootstrap_Table.css" rel="stylesheet" />
+<style>
+    .thead {
+        font-weight: bold;
+        vertical-align:text-top;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSubmit").click(function () {
+            //console.log("Submit click");
+            if (confirm("Are you sure ?")) {
+                document.forms["formDel"].submit();
+            } else {
+                return false;
+            }
+        });
+    });
+</script>
+<form id="formDel" name="formDel" method="post" action="@Url.Action("DelComment","Home")">
+    <table class="table table-condensed">
+        <tr>
+            <td class="thead">Main Job </td>
+            <td>@Model.main_job_no</td>
+        </tr>
+        <tr>
+            <td class="thead">Sub Job</td>
+            <td>@Model.sub_job_no</td>
+        </tr>
+        <tr>
+            <td class="thead">Marking Step</td>
+            <td>@Model.marking_step</td>
+        </tr>
+        <tr>
+            <td class="thead">Comment </td>
+            <td>@Model.comment_process</td>
+        </tr>
+        <tr>
+            <td><input type="hidden" id="hdMain" name="hdMain" value="@Model.main_job_no" />
+                <input type="hidden" id="hdSub" name="hdSub" value="@Model.sub_job_no" />
+                <input type="hidden" id="hdMark" name="hdMark" value="@Model.marking_step" /></td>
+            <td><input type="button" id="btnSubmit" class="btn" value="Delete" /></td>
+        </tr>
+    </table>
+</form>

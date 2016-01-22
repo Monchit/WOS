@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Group Master";
+}
+@*<link href="~/Scripts/jtable/themes/metro/purple/jtable.min.css" rel="stylesheet" />*@
+<style type="text/css">
+    /*fix jTable*/
+    span.jtable-goto-page select, span.jtable-page-size-change select {
+        height: 25px;
+        width: 60px;
+        padding: 2px 2px;
+        margin-bottom:auto;
+    }
+    div.jtable-main-container table.jtable thead th {
+        text-align: center;
+    }
+    div.jtable-main-container > table.jtable > tbody > tr.jtable-data-row > td {
+        text-align: center;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#jTableGroup').jtable({
+            title: 'Group Master',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'group_id ASC', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("GroupList","Home")',
+                @*deleteAction: '@Url.Action("DeleteGroup","Home")',*@
+                updateAction: '@Url.Action("UpdateGroup","Home")',
+                createAction: '@Url.Action("CreateGroup","Home")'
+            },
+            fields: {
+                group_id: { title: 'Group ID.', key: true, create: false, edit: false, width: '30%' },
+                group_name: { title: 'Group Name', create: true, edit: true, width: '70%' }
+            }
+        });
+        //Load student list from server
+        $('#jTableGroup').jtable('load');
+    });
+</script>
+
+<div id="jTableGroup" style="width:600px;"></div>

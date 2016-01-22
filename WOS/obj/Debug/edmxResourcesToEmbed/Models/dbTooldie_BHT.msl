@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tooldietrainModelStoreContainer" CdmEntityContainer="tooldietrainEntities">
+    <EntitySetMapping Name="td_bite_status">
+      <EntityTypeMapping TypeName="tooldietrainModel.td_bite_status">
+        <MappingFragment StoreEntitySet="td_bite_status">
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="process_code" ColumnName="process_code" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="td_job_progress">
+      <EntityTypeMapping TypeName="tooldietrainModel.td_job_progress">
+        <MappingFragment StoreEntitySet="td_job_progress">
+          <ScalarProperty Name="transaction_no" ColumnName="transaction_no" />
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+          <ScalarProperty Name="process_code" ColumnName="process_code" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="process_status" ColumnName="process_status" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="start_user_id" ColumnName="start_user_id" />
+          <ScalarProperty Name="start_user_name" ColumnName="start_user_name" />
+          <ScalarProperty Name="finished_date" ColumnName="finished_date" />
+          <ScalarProperty Name="finished_time" ColumnName="finished_time" />
+          <ScalarProperty Name="finished_user_id" ColumnName="finished_user_id" />
+          <ScalarProperty Name="finished_user_name" ColumnName="finished_user_name" />
+          <ScalarProperty Name="transfer_sign" ColumnName="transfer_sign" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_rack_mold">
+      <EntityTypeMapping TypeName="tooldietrainModel.tm_rack_mold">
+        <MappingFragment StoreEntitySet="tm_rack_mold">
+          <ScalarProperty Name="location_cd" ColumnName="location_cd" />
+          <ScalarProperty Name="proc_code" ColumnName="proc_code" />
+          <ScalarProperty Name="proc_name" ColumnName="proc_name" />
+          <ScalarProperty Name="rack_no" ColumnName="rack_no" />
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="status_use" ColumnName="status_use" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_rack_part">
+      <EntityTypeMapping TypeName="tooldietrainModel.tm_rack_part">
+        <MappingFragment StoreEntitySet="tm_rack_part">
+          <ScalarProperty Name="location_cd" ColumnName="location_cd" />
+          <ScalarProperty Name="proc_code" ColumnName="proc_code" />
+          <ScalarProperty Name="proc_name" ColumnName="proc_name" />
+          <ScalarProperty Name="rack_no" ColumnName="rack_no" />
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="status_use" ColumnName="status_use" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tm_user_id">
+      <EntityTypeMapping TypeName="tooldietrainModel.tm_user_id">
+        <MappingFragment StoreEntitySet="tm_user_id">
+          <ScalarProperty Name="location_cd" ColumnName="location_cd" />
+          <ScalarProperty Name="group_cd" ColumnName="group_cd" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="admin_sign" ColumnName="admin_sign" />
+          <ScalarProperty Name="pw" ColumnName="pw" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tr_job_progress">
+      <EntityTypeMapping TypeName="tooldietrainModel.tr_job_progress">
+        <MappingFragment StoreEntitySet="tr_job_progress">
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+          <ScalarProperty Name="process_code" ColumnName="process_code" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tr_machine">
+      <EntityTypeMapping TypeName="tooldietrainModel.tr_machine">
+        <MappingFragment StoreEntitySet="tr_machine">
+          <ScalarProperty Name="machine_code" ColumnName="machine_code" />
+          <ScalarProperty Name="machine_name" ColumnName="machine_name" />
+          <ScalarProperty Name="proc_code" ColumnName="proc_code" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tr_main_job">
+      <EntityTypeMapping TypeName="tooldietrainModel.tr_main_job">
+        <MappingFragment StoreEntitySet="tr_main_job">
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="wo_no" ColumnName="wo_no" />
+          <ScalarProperty Name="customer_oid" ColumnName="customer_oid" />
+          <ScalarProperty Name="cost_code" ColumnName="cost_code" />
+          <ScalarProperty Name="plant_id" ColumnName="plant_id" />
+          <ScalarProperty Name="plant_code" ColumnName="plant_code" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="job_type" ColumnName="job_type" />
+          <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="ref_old_td" ColumnName="ref_old_td" />
+          <ScalarProperty Name="wo_evaluation" ColumnName="wo_evaluation" />
+          <ScalarProperty Name="promise_date" ColumnName="promise_date" />
+          <ScalarProperty Name="promise_time" ColumnName="promise_time" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tr_process">
+      <EntityTypeMapping TypeName="tooldietrainModel.tr_process">
+        <MappingFragment StoreEntitySet="tr_process">
+          <ScalarProperty Name="proc_code" ColumnName="proc_code" />
+          <ScalarProperty Name="proc_name" ColumnName="proc_name" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tr_sub_job">
+      <EntityTypeMapping TypeName="tooldietrainModel.tr_sub_job">
+        <MappingFragment StoreEntitySet="tr_sub_job">
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="seq_no" ColumnName="seq_no" />
+          <ScalarProperty Name="item_part_name" ColumnName="item_part_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="ref_sub_workorder" ColumnName="ref_sub_workorder" />
+          <ScalarProperty Name="wo_evaluation" ColumnName="wo_evaluation" />
+          <ScalarProperty Name="rank" ColumnName="rank" />
+          <ScalarProperty Name="repair_qty" ColumnName="repair_qty" />
+          <ScalarProperty Name="repair_sub_job_oid" ColumnName="repair_sub_job_oid" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="cancel_date" ColumnName="cancel_date" />
+          <ScalarProperty Name="cancel_time" ColumnName="cancel_time" />
+          <ScalarProperty Name="cancel_by" ColumnName="cancel_by" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ts_process_result">
+      <EntityTypeMapping TypeName="tooldietrainModel.ts_process_result">
+        <MappingFragment StoreEntitySet="ts_process_result">
+          <ScalarProperty Name="transaction_no" ColumnName="transaction_no" />
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+          <ScalarProperty Name="process_code" ColumnName="process_code" />
+          <ScalarProperty Name="machine_code" ColumnName="machine_code" />
+          <ScalarProperty Name="update_pgm" ColumnName="update_pgm" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="start_user" ColumnName="start_user" />
+          <ScalarProperty Name="finished_date" ColumnName="finished_date" />
+          <ScalarProperty Name="finished_time" ColumnName="finished_time" />
+          <ScalarProperty Name="finished_user" ColumnName="finished_user" />
+          <ScalarProperty Name="spent_time" ColumnName="spent_time" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="transfer_sign" ColumnName="transfer_sign" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tt_assy_stat">
+      <EntityTypeMapping TypeName="tooldietrainModel.tt_assy_stat">
+        <MappingFragment StoreEntitySet="tt_assy_stat">
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tt_machine_stat">
+      <EntityTypeMapping TypeName="tooldietrainModel.tt_machine_stat">
+        <MappingFragment StoreEntitySet="tt_machine_stat">
+          <ScalarProperty Name="process_code" ColumnName="process_code" />
+          <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

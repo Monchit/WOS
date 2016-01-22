@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="89d5b6bddcfb48b5b09db777ffe6fefe" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="tooldietrainModel.td_comment" Width="1.5" PointX="0.738461919472768" PointY="23.467767338951941" />
+        <EntityTypeShape EntityType="tooldietrainModel.td_job_progress" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="tooldietrainModel.tm_group" Width="1.5" PointX="9.5" PointY="11.75" />
+        <EntityTypeShape EntityType="tooldietrainModel.tm_job_cal" Width="1.5" PointX="6.375" PointY="26.75" />
+        <EntityTypeShape EntityType="tooldietrainModel.tm_rack_mold" Width="1.5" PointX="0.75" PointY="25.5" />
+        <EntityTypeShape EntityType="tooldietrainModel.tm_rack_part" Width="1.5" PointX="8.25" PointY="23.5" />
+        <EntityTypeShape EntityType="tooldietrainModel.tm_rack_process" Width="1.5" PointX="7.375" PointY="17.125" />
+        <EntityTypeShape EntityType="tooldietrainModel.tm_user_id" Width="1.5" PointX="5.25" PointY="11.75" />
+        <EntityTypeShape EntityType="tooldietrainModel.tr_job_progress" Width="1.5" PointX="2.625" PointY="23.5" />
+        <EntityTypeShape EntityType="tooldietrainModel.tr_main_job" Width="1.5" PointX="11.625" PointY="11.75" />
+        <EntityTypeShape EntityType="tooldietrainModel.tr_sub_job" Width="1.5" PointX="3" PointY="11.75" />
+        <EntityTypeShape EntityType="tooldietrainModel.ts_process_result" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="tooldietrainModel.tt_assy_stat" Width="1.5" PointX="5.25" PointY="15.125" />
+        <EntityTypeShape EntityType="tooldietrainModel.tt_date_time" Width="1.5" PointX="2.625" PointY="27.125" />
+        <EntityTypeShape EntityType="tooldietrainModel.tt_machine_stat" Width="1.5" PointX="4.5" PointY="25.75" />
+        <EntityTypeShape EntityType="tooldietrainModel.td_bite_status" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="tooldietrainModel.tr_job_progress_log" Width="1.5" PointX="7.375" PointY="8.125" />
+        <EntityTypeShape EntityType="tooldietrainModel.tr_process" Width="1.5" PointX="6.375" PointY="23.5" />
+        <EntityTypeShape EntityType="tooldietrainModel.td_user_skill" Width="1.5" PointX="4.5" PointY="23.5" />
+        <EntityTypeShape EntityType="tooldietrainModel.tr_machine" Width="1.5" PointX="9.5" PointY="13.375" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

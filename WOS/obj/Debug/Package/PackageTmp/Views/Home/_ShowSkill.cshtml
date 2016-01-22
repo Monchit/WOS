@@ -1,0 +1,38 @@
+﻿@using WOS.ViewModels
+@model IEnumerable<VM_user_skill>
+
+<link href="~/Content/Bootstrap_Table.css" rel="stylesheet" />
+<div style="width:420px;">
+    <img src="@ViewBag.Image" alt="No User Picture" style="max-height:150px; max-width:150px; float: left; margin: 0px 15px 15px 0px;" />
+    <h1>Name : @ViewBag.Username</h1>
+    <h1>Rank : @ViewBag.Rank</h1>
+</div>
+
+<table id="tbSkill" class="table table-condensed" style="width: 420px;font-size:.8em;">
+    <thead>
+        <tr>
+            <th>Skill Type</th>
+            <th>Process/Knowledge</th>
+            <th style="text-align:center;">Evaluation</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.skill_type</td>
+            <td>@item.proc_name</td>
+            <td style="text-align:center;">
+                @if (item.evaluation == true)
+                {
+                    <text><img src="~/Images/Button-Ok-icon24.png" alt="Pass" /></text>
+                }
+                else
+                {
+                    <text><img src="~/Images/Button-Delete-icon24.png" alt="No" /></text>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

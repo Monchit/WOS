@@ -1,0 +1,153 @@
+﻿@{
+    ViewBag.Title = "Process Time";
+}
+<link href="~/Content/form-validator.css" rel="stylesheet" />
+<script src="~/Scripts/jqValidate.js"></script>
+<style type="text/css">
+    /*fix jTable*/
+    span.jtable-goto-page select, span.jtable-page-size-change select {
+        height: 25px;
+        width: 60px;
+        padding: 2px 2px;
+        margin-bottom:auto;
+    }
+    div.jtable-main-container table.jtable thead th {
+        text-align: center;
+    }
+    div.jtable-main-container > table.jtable > tbody > tr.jtable-data-row > td {
+        text-align: center;
+    }
+
+    .tred {
+        color:#ff6666;
+    }
+
+    .tblue {
+        color: #140ca3;
+    }
+
+    .tgreen {
+        color:#32cd32;
+    }
+
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#date_start").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#date_end").datepicker("option", "minDate", selectedDate);
+            }
+        });
+        $("#date_end").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function (selectedDate) {
+                $("#date_start").datepicker("option", "maxDate", selectedDate);
+            }
+        });
+
+        //$("#txtMain").keyup(function () {
+        //    if ($("#txtMain").val() != "") {
+        //        $("#txtSub").removeAttr("disabled");
+        //    } else {
+        //        $("#txtSub").attr("disabled", "disabled");
+        //    }
+        //});
+
+        $('#jTableProcessTime').jtable({
+            //title: 'Progressive',
+            paging: true, //Enable paging
+            pageSize: 20, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            selecting: true, //Enable selecting
+            defaultSorting: 'main_job_no, sub_job_no, marking_step', //Set default sorting
+            actions: {
+                listAction: '@Url.Action("ProcessTimeList","Home")'
+            },
+            fields: {
+                main_job_no: { title: 'MAINJOBNO', width: '12%' },
+                sub_job_no: { title: 'SUBJOBNO', width: '6%' },
+                //marking_step: { title: 'STEP', width: '5%' },
+                qty: { title: 'QTY', width: '5%' },
+                item: { title: 'PART NO', width: '9%' },
+                proc_name: { title: 'PROCESS', width: '10%' },
+                machine_no: { title: 'MACHINE', width: '7%' },
+                process_status: { title: 'STATUS', width: '6%' },
+                s_plan: { title: 'S-PLN', width: '5%', listClass: 'tred' },
+                s_act: { title: 'S-ACT', width: '5%', listClass: 'tred' },
+                s_diff: { title: 'S-DIF', width: '5%', listClass: 'tred', display: function (data) { return data.record.s_act - data.record.s_plan } },
+                m_plan: { title: 'M-PLN', width: '5%', listClass: 'tblue' },
+                m_act: { title: 'M-ACT', width: '5%', listClass: 'tblue' },
+                m_diff: { title: 'M-DIF', width: '5%', listClass: 'tblue', display: function (data) { return data.record.m_act - data.record.m_plan } },
+                t_plan: { title: 'T-PLN', width: '5%', listClass: 'tgreen', display: function (data) { return data.record.s_plan + data.record.m_plan } },
+                t_act: { title: 'T-ACT', width: '5%', listClass: 'tgreen', display: function (data) { return data.record.s_act + data.record.m_act } },
+                t_diff: { title: 'T-DIF', width: '5%', listClass: 'tgreen', display: function (data) { return (data.record.s_act - data.record.s_plan) + (data.record.m_act - data.record.m_plan) } }
+            }
+        });
+
+        $("#btnSearch").click(function () {
+            if (!$.validate({ form: 'frmExport' })) {
+                return false;
+            } else {
+                //e.preventDefault();
+                $('#jTableProcessTime').jtable('load', {
+                    start: $('#date_start').val(),
+                    end: $('#date_end').val(),
+                    mainjob: $('#txtMain').val(),
+                    subjob: $('#txtSub').val(),
+                    process: $('#DropDown_Proc').val()
+                });
+            }
+        });
+    });
+</script>
+
+<div class="content-module">
+    <div class="content-module-heading cf">	
+		<h3 class="fl">PROCESS TIME REPORT : SEARCH</h3>
+		<span class="fr expand-collapse-text">Click to collapse</span>
+		<span class="fr expand-collapse-text initial-expand">Click to expand</span>
+	</div>
+	<div class="content-module-main" id="divMainDetail">
+        <form id="frmExport" action="@Url.Action("ExportProcessTime", "Home")" name="frmExport" method="post">
+            <table>
+                <tr>
+                    <td>START :*</td>
+                    <td><input id="date_start" type="date" name="date_start" class="normal" /></td>
+                    <td>END : </td>
+                    <td><input id="date_end" type="date" name="date_end" class="normal" /></td>
+                    <td colspan="2">
+                        <button type="button" id="btnSearch" class="button round blue image-right ic-search text-upper">Search</button>
+                        <button type="reset" id="btnReset" class="button round dark image-right ic-refresh text-upper">Reset</button>
+                        <button type="submit" id="btnExport" class="button round green text-upper" style="margin-left: 10px">Export Excel</button></td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="height:10px;"></td>
+                </tr>
+                <tr>
+                    <td>MAINJOB : </td>
+                    <td><input type="text" id="txtMain" name="txtMain" class="normal" /></td>
+                    <td>SUBJOB : </td>
+                    <td><input type="text" id="txtSub" name="txtSub" class="normal" /></td>
+                    <td>PROCESS : </td>
+                    <td>
+                        <select id="DropDown_Proc" name="DropDown_Proc" class="normal">
+                            <option value="">-- Select All --</option>
+                            @foreach(var process in ViewBag.process)
+                            {
+                                <option value="@process.proc_code">@process.proc_name</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+            </table> 
+        </form>
+    </div>
+</div>
+
+
+<div id="jTableProcessTime"></div>

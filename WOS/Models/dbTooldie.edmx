@@ -1,0 +1,1046 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="tooldietrainModel.Store" Alias="Self" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 9.3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="tooldietrainModelStoreContainer">
+          <EntitySet Name="td_bite_status" EntityType="tooldietrainModel.Store.td_bite_status" store:Type="Tables" Schema="public" />
+          <EntitySet Name="td_comment" EntityType="tooldietrainModel.Store.td_comment" store:Type="Tables" Schema="public" />
+          <EntitySet Name="td_job_progress" EntityType="tooldietrainModel.Store.td_job_progress" store:Type="Tables" Schema="public" />
+          <EntitySet Name="td_user_skill" EntityType="tooldietrainModel.Store.td_user_skill" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tm_group" EntityType="tooldietrainModel.Store.tm_group" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tm_job_cal" EntityType="tooldietrainModel.Store.tm_job_cal" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tm_rack_mold" EntityType="tooldietrainModel.Store.tm_rack_mold" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tm_rack_part" EntityType="tooldietrainModel.Store.tm_rack_part" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tm_rack_process" EntityType="tooldietrainModel.Store.tm_rack_process" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tm_user_id" EntityType="tooldietrainModel.Store.tm_user_id" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tr_job_progress" EntityType="tooldietrainModel.Store.tr_job_progress" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tr_job_progress_log" EntityType="tooldietrainModel.Store.tr_job_progress_log" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tr_machine" EntityType="tooldietrainModel.Store.tr_machine" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tr_main_job" EntityType="tooldietrainModel.Store.tr_main_job" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tr_process" EntityType="tooldietrainModel.Store.tr_process" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tr_sub_job" EntityType="tooldietrainModel.Store.tr_sub_job" store:Type="Tables" Schema="public" />
+          <EntitySet Name="ts_process_result" EntityType="tooldietrainModel.Store.ts_process_result" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tt_assy_stat" EntityType="tooldietrainModel.Store.tt_assy_stat" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tt_date_time" EntityType="tooldietrainModel.Store.tt_date_time" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tt_machine_stat" EntityType="tooldietrainModel.Store.tt_machine_stat" store:Type="Tables" Schema="public" />
+        </EntityContainer>
+        <EntityType Name="td_bite_status">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+          </Key>
+          <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="process_code" Type="char" MaxLength="50" />
+          <Property Name="qty" Type="int" />
+          <Property Name="machine_no" Type="char" MaxLength="10" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="entry_time" Type="char" MaxLength="6" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="td_comment">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+            <PropertyRef Name="marking_step" />
+          </Key>
+          <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="marking_step" Type="int" Nullable="false" />
+          <Property Name="comment_process" Type="char" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="td_job_progress">
+          <Key>
+            <PropertyRef Name="transaction_no" />
+          </Key>
+          <Property Name="transaction_no" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="main_job_no" Type="char" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" MaxLength="20" />
+          <Property Name="marking_step" Type="int" />
+          <Property Name="process_code" Type="char" MaxLength="50" />
+          <Property Name="qty" Type="int" />
+          <Property Name="machine_no" Type="char" MaxLength="10" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="entry_time" Type="char" MaxLength="6" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+          <Property Name="process_status" Type="char" MaxLength="1" />
+          <Property Name="start_date" Type="char" MaxLength="8" />
+          <Property Name="start_time" Type="char" MaxLength="6" />
+          <Property Name="start_user_id" Type="char" MaxLength="6" />
+          <Property Name="start_user_name" Type="char" MaxLength="50" />
+          <Property Name="finished_date" Type="char" MaxLength="8" />
+          <Property Name="finished_time" Type="char" MaxLength="6" />
+          <Property Name="finished_user_id" Type="char" MaxLength="6" />
+          <Property Name="finished_user_name" Type="char" MaxLength="50" />
+          <Property Name="transfer_sign" Type="char" MaxLength="1" />
+          <Property Name="status_auto_cal" Type="char" MaxLength="1" />
+          <Property Name="group_no" Type="char" MaxLength="10" />
+          <Property Name="type_est" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="td_user_skill">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="proc_code" />
+          </Key>
+          <Property Name="user_id" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="evaluation" Type="boolean" Nullable="false" />
+          <Property Name="proc_code" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="skill_type" Type="char" MaxLength="2" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="tm_group">
+          <Key>
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Name="group_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="group_name" Type="char" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tm_job_cal">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+          </Key>
+          <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tm_rack_mold">
+          <Key>
+            <PropertyRef Name="rack_no" />
+          </Key>
+          <Property Name="location_cd" Type="char" MaxLength="3" />
+          <Property Name="proc_code" Type="char" MaxLength="30" />
+          <Property Name="proc_name" Type="char" MaxLength="50" />
+          <Property Name="rack_no" Type="char" Nullable="false" MaxLength="12" />
+          <Property Name="main_job_no" Type="char" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" MaxLength="20" />
+          <Property Name="item" Type="char" MaxLength="50" />
+          <Property Name="status_use" Type="char" MaxLength="1" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+          <Property Name="update_user" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tm_rack_part">
+          <Key>
+            <PropertyRef Name="transaction_no" />
+          </Key>
+          <Property Name="transaction_no" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="location_cd" Type="char" MaxLength="3" />
+          <Property Name="proc_code" Type="char" MaxLength="30" />
+          <Property Name="proc_name" Type="char" MaxLength="50" />
+          <Property Name="rack_no" Type="char" MaxLength="12" />
+          <Property Name="main_job_no" Type="char" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" MaxLength="20" />
+          <Property Name="item" Type="char" MaxLength="50" />
+          <Property Name="status_use" Type="char" MaxLength="1" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+          <Property Name="update_user" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tm_rack_process">
+          <Key>
+            <PropertyRef Name="rack_no" />
+          </Key>
+          <Property Name="rack_no" Type="char" Nullable="false" MaxLength="12" />
+          <Property Name="process_code" Type="char" MaxLength="6" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="entry_time" Type="char" MaxLength="6" />
+          <Property Name="entry_user" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tm_user_id">
+          <Key>
+            <PropertyRef Name="location_cd" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="location_cd" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="group_cd" Type="char" MaxLength="6" />
+          <Property Name="user_id" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="first_name" Type="char" MaxLength="20" />
+          <Property Name="last_name" Type="char" MaxLength="20" />
+          <Property Name="admin_sign" Type="char" MaxLength="1" />
+          <Property Name="pw" Type="char" MaxLength="10" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="rank" Type="char" MaxLength="1" />
+          <Property Name="full_name" Type="char" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tr_job_progress">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+            <PropertyRef Name="marking_step" />
+          </Key>
+          <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="marking_step" Type="int" Nullable="false" />
+          <Property Name="process_code" Type="char" MaxLength="50" />
+          <Property Name="qty" Type="int" />
+          <Property Name="machine_no" Type="char" MaxLength="10" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="entry_time" Type="char" MaxLength="6" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+          <Property Name="est_setup_time" Type="int" />
+          <Property Name="est_machine_time" Type="int" />
+        </EntityType>
+        <EntityType Name="tr_job_progress_log">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+            <PropertyRef Name="marking_step" />
+          </Key>
+          <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="marking_step" Type="int" Nullable="false" />
+          <Property Name="process_code" Type="char" MaxLength="50" />
+          <Property Name="qty" Type="int" />
+          <Property Name="machine_no" Type="char" MaxLength="10" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="entry_time" Type="char" MaxLength="6" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+          <Property Name="delete_date" Type="char" MaxLength="8" />
+          <Property Name="delete_time" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="tr_machine">
+          <Key>
+            <PropertyRef Name="machine_code" />
+            <PropertyRef Name="proc_code" />
+          </Key>
+          <Property Name="machine_code" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="machine_name" Type="char" Nullable="false" MaxLength="100" />
+          <Property Name="proc_code" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="entry_time" Type="char" MaxLength="6" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="tr_main_job">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+          </Key>
+          <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="wo_no" Type="char" MaxLength="20" />
+          <Property Name="customer_oid" Type="int" />
+          <Property Name="customer_name" Type="char" MaxLength="150" />
+          <Property Name="cost_code" Type="char" MaxLength="10" />
+          <Property Name="plant_id" Type="int" />
+          <Property Name="plant_code" Type="char" MaxLength="10" />
+          <Property Name="plant_div_name" Type="char" MaxLength="100" />
+          <Property Name="item" Type="char" MaxLength="150" />
+          <Property Name="job_type" Type="char" MaxLength="1" />
+          <Property Name="product_type_code" Type="char" MaxLength="5" />
+          <Property Name="product_type_name" Type="char" MaxLength="150" />
+          <Property Name="description" Type="text" />
+          <Property Name="qty" Type="int" />
+          <Property Name="unit" Type="char" MaxLength="5" />
+          <Property Name="ref_old_td" Type="char" MaxLength="20" />
+          <Property Name="wo_evaluation" Type="char" MaxLength="30" />
+          <Property Name="due_date" Type="char" MaxLength="8" />
+          <Property Name="due_time" Type="char" MaxLength="6" />
+          <Property Name="promise_date" Type="char" MaxLength="8" />
+          <Property Name="promise_time" Type="char" MaxLength="6" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="entry_time" Type="char" MaxLength="6" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="tr_process">
+          <Key>
+            <PropertyRef Name="proc_code" />
+          </Key>
+          <Property Name="proc_code" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="proc_name" Type="char" Nullable="false" MaxLength="100" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="entry_time" Type="char" MaxLength="6" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+          <Property Name="standard_time" Type="char" MaxLength="10" />
+          <Property Name="skip_process_setup" Type="int" />
+          <Property Name="skill_type" Type="char" MaxLength="2" />
+          <Property Name="del_flag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tr_sub_job">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+          </Key>
+          <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="seq_no" Type="int" />
+          <Property Name="item_part_name" Type="char" MaxLength="100" />
+          <Property Name="description" Type="char" MaxLength="100" />
+          <Property Name="qty" Type="int" />
+          <Property Name="unit" Type="char" MaxLength="5" />
+          <Property Name="ref_sub_workorder" Type="char" MaxLength="20" />
+          <Property Name="wo_evaluation" Type="char" MaxLength="30" />
+          <Property Name="rank" Type="char" MaxLength="1" />
+          <Property Name="repair_qty" Type="int" />
+          <Property Name="repair_sub_job_oid" Type="int" />
+          <Property Name="remark" Type="char" MaxLength="200" />
+          <Property Name="cancel_date" Type="char" MaxLength="8" />
+          <Property Name="cancel_time" Type="char" MaxLength="6" />
+          <Property Name="cancel_by" Type="char" MaxLength="50" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="entry_time" Type="char" MaxLength="6" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+          <Property Name="group_type_id" Type="int" />
+          <Property Name="group_type_code" Type="char" MaxLength="50" />
+          <Property Name="type_id" Type="int" />
+          <Property Name="type_code" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ts_process_result">
+          <Key>
+            <PropertyRef Name="transaction_no" />
+          </Key>
+          <Property Name="transaction_no" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="main_job_no" Type="char" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" MaxLength="20" />
+          <Property Name="qty" Type="int" />
+          <Property Name="marking_step" Type="char" MaxLength="5" />
+          <Property Name="process_code" Type="char" MaxLength="10" />
+          <Property Name="machine_code" Type="char" MaxLength="10" />
+          <Property Name="update_pgm" Type="char" MaxLength="10" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="start_date" Type="char" MaxLength="8" />
+          <Property Name="start_time" Type="char" MaxLength="6" />
+          <Property Name="start_user" Type="char" MaxLength="30" />
+          <Property Name="finished_date" Type="char" MaxLength="8" />
+          <Property Name="finished_time" Type="char" MaxLength="6" />
+          <Property Name="finished_user" Type="char" MaxLength="30" />
+          <Property Name="spent_time" Type="int" />
+          <Property Name="remark" Type="char" MaxLength="100" />
+          <Property Name="transfer_sign" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tt_assy_stat">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+          </Key>
+          <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tt_date_time">
+          <Key>
+            <PropertyRef Name="server_date" />
+            <PropertyRef Name="server_time" />
+          </Key>
+          <Property Name="server_date" Type="char" Nullable="false" MaxLength="8" />
+          <Property Name="server_time" Type="char" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="tt_machine_stat">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+            <PropertyRef Name="marking_step" />
+          </Key>
+          <Property Name="process_code" Type="char" Nullable="false" MaxLength="50" />
+          <Property Name="machine_no" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="main_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="marking_step" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tooldietrainModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="tooldietrainEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="td_comment" EntityType="tooldietrainModel.td_comment" />
+          <EntitySet Name="td_job_progress" EntityType="tooldietrainModel.td_job_progress" />
+          <EntitySet Name="tm_group" EntityType="tooldietrainModel.tm_group" />
+          <EntitySet Name="tm_job_cal" EntityType="tooldietrainModel.tm_job_cal" />
+          <EntitySet Name="tm_rack_mold" EntityType="tooldietrainModel.tm_rack_mold" />
+          <EntitySet Name="tm_rack_part" EntityType="tooldietrainModel.tm_rack_part" />
+          <EntitySet Name="tm_rack_process" EntityType="tooldietrainModel.tm_rack_process" />
+          <EntitySet Name="tm_user_id" EntityType="tooldietrainModel.tm_user_id" />
+          <EntitySet Name="tr_job_progress" EntityType="tooldietrainModel.tr_job_progress" />
+          <EntitySet Name="tr_main_job" EntityType="tooldietrainModel.tr_main_job" />
+          <EntitySet Name="tr_sub_job" EntityType="tooldietrainModel.tr_sub_job" />
+          <EntitySet Name="ts_process_result" EntityType="tooldietrainModel.ts_process_result" />
+          <EntitySet Name="tt_assy_stat" EntityType="tooldietrainModel.tt_assy_stat" />
+          <EntitySet Name="tt_date_time" EntityType="tooldietrainModel.tt_date_time" />
+          <EntitySet Name="tt_machine_stat" EntityType="tooldietrainModel.tt_machine_stat" />
+          <EntitySet Name="td_bite_status" EntityType="tooldietrainModel.td_bite_status" />
+          <EntitySet Name="tr_job_progress_log" EntityType="tooldietrainModel.tr_job_progress_log" />
+          <EntitySet Name="tr_process" EntityType="tooldietrainModel.tr_process" />
+          <EntitySet Name="td_user_skill" EntityType="tooldietrainModel.td_user_skill" />
+          <EntitySet Name="tr_machine" EntityType="tooldietrainModel.tr_machine" />
+        </EntityContainer>
+        <EntityType Name="td_comment">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+            <PropertyRef Name="marking_step" />
+          </Key>
+          <Property Type="String" Name="main_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="marking_step" Nullable="false" />
+          <Property Type="String" Name="comment_process" MaxLength="200" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="td_job_progress">
+          <Key>
+            <PropertyRef Name="transaction_no" />
+          </Key>
+          <Property Type="String" Name="transaction_no" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="main_job_no" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="marking_step" />
+          <Property Type="String" Name="process_code" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="qty" />
+          <Property Type="String" Name="machine_no" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="process_status" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="start_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="start_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="start_user_id" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="start_user_name" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="finished_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="finished_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="finished_user_id" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="finished_user_name" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="transfer_sign" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="status_auto_cal" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="group_no" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="type_est" MaxLength="2" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tm_group">
+          <Key>
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Type="Int32" Name="group_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="group_name" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tm_job_cal">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+          </Key>
+          <Property Type="String" Name="main_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tm_rack_mold">
+          <Key>
+            <PropertyRef Name="rack_no" />
+          </Key>
+          <Property Type="String" Name="location_cd" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="proc_code" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="proc_name" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="rack_no" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="main_job_no" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="item" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="status_use" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_user" MaxLength="50" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tm_rack_part">
+          <Key>
+            <PropertyRef Name="transaction_no" />
+          </Key>
+          <Property Type="String" Name="transaction_no" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="location_cd" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="proc_code" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="proc_name" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="rack_no" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="main_job_no" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="item" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="status_use" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_user" MaxLength="50" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tm_rack_process">
+          <Key>
+            <PropertyRef Name="rack_no" />
+          </Key>
+          <Property Type="String" Name="rack_no" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="process_code" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_user" MaxLength="50" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tm_user_id">
+          <Key>
+            <PropertyRef Name="location_cd" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Type="String" Name="location_cd" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="group_cd" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="user_id" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="first_name" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="last_name" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="admin_sign" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="pw" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="rank" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="full_name" MaxLength="100" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tr_job_progress">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+            <PropertyRef Name="marking_step" />
+          </Key>
+          <Property Type="String" Name="main_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="marking_step" Nullable="false" />
+          <Property Type="String" Name="process_code" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="qty" />
+          <Property Type="String" Name="machine_no" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="est_setup_time" />
+          <Property Type="Int32" Name="est_machine_time" />
+        </EntityType>
+        <EntityType Name="tr_main_job">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+          </Key>
+          <Property Type="String" Name="main_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="wo_no" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="customer_oid" />
+          <Property Type="String" Name="customer_name" MaxLength="150" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="cost_code" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="plant_id" />
+          <Property Type="String" Name="plant_code" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="plant_div_name" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="item" MaxLength="150" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="job_type" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="product_type_code" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="product_type_name" MaxLength="150" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="qty" />
+          <Property Type="String" Name="unit" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ref_old_td" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="wo_evaluation" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="due_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="due_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="promise_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="promise_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tr_sub_job">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+          </Key>
+          <Property Type="String" Name="main_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="seq_no" />
+          <Property Type="String" Name="item_part_name" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="description" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="qty" />
+          <Property Type="String" Name="unit" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ref_sub_workorder" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="wo_evaluation" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="rank" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="repair_qty" />
+          <Property Type="Int32" Name="repair_sub_job_oid" />
+          <Property Type="String" Name="remark" MaxLength="200" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="cancel_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="cancel_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="cancel_by" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="group_type_id" />
+          <Property Type="String" Name="group_type_code" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="type_id" />
+          <Property Type="String" Name="type_code" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ts_process_result">
+          <Key>
+            <PropertyRef Name="transaction_no" />
+          </Key>
+          <Property Type="String" Name="transaction_no" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="main_job_no" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="qty" />
+          <Property Type="String" Name="marking_step" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="process_code" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="machine_code" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_pgm" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="status" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="start_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="start_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="start_user" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="finished_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="finished_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="finished_user" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="spent_time" />
+          <Property Type="String" Name="remark" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="transfer_sign" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tt_assy_stat">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+          </Key>
+          <Property Type="String" Name="main_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="status" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tt_date_time">
+          <Key>
+            <PropertyRef Name="server_date" />
+            <PropertyRef Name="server_time" />
+          </Key>
+          <Property Type="String" Name="server_date" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="server_time" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tt_machine_stat">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+            <PropertyRef Name="marking_step" />
+          </Key>
+          <Property Type="String" Name="process_code" Nullable="false" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="machine_no" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="main_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="marking_step" Nullable="false" />
+        </EntityType>
+        <EntityType Name="td_bite_status">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+          </Key>
+          <Property Type="String" Name="main_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="process_code" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="qty" />
+          <Property Type="String" Name="machine_no" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="status" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tr_job_progress_log">
+          <Key>
+            <PropertyRef Name="main_job_no" />
+            <PropertyRef Name="sub_job_no" />
+            <PropertyRef Name="marking_step" />
+          </Key>
+          <Property Type="String" Name="main_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="sub_job_no" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="marking_step" Nullable="false" />
+          <Property Type="String" Name="process_code" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="qty" />
+          <Property Type="String" Name="machine_no" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="delete_date" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="delete_time" MaxLength="6" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tr_process">
+          <Key>
+            <PropertyRef Name="proc_code" />
+          </Key>
+          <Property Type="String" Name="proc_code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="proc_name" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="standard_time" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="skip_process_setup" />
+          <Property Type="String" Name="skill_type" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="del_flag" Nullable="false" />
+        </EntityType>
+        <EntityType Name="td_user_skill">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="proc_code" />
+          </Key>
+          <Property Type="String" Name="user_id" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Type="Boolean" Name="evaluation" Nullable="false" />
+          <Property Type="String" Name="proc_code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="skill_type" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tr_machine">
+          <Key>
+            <PropertyRef Name="machine_code" />
+            <PropertyRef Name="proc_code" />
+          </Key>
+          <Property Type="String" Name="machine_code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="machine_name" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="proc_code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tooldietrainModelStoreContainer" CdmEntityContainer="tooldietrainEntities">
+          <EntitySetMapping Name="td_comment">
+            <EntityTypeMapping TypeName="tooldietrainModel.td_comment">
+              <MappingFragment StoreEntitySet="td_comment">
+                <ScalarProperty Name="comment_process" ColumnName="comment_process" />
+                <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="td_job_progress">
+            <EntityTypeMapping TypeName="tooldietrainModel.td_job_progress">
+              <MappingFragment StoreEntitySet="td_job_progress">
+                <ScalarProperty Name="type_est" ColumnName="type_est" />
+                <ScalarProperty Name="group_no" ColumnName="group_no" />
+                <ScalarProperty Name="status_auto_cal" ColumnName="status_auto_cal" />
+                <ScalarProperty Name="transfer_sign" ColumnName="transfer_sign" />
+                <ScalarProperty Name="finished_user_name" ColumnName="finished_user_name" />
+                <ScalarProperty Name="finished_user_id" ColumnName="finished_user_id" />
+                <ScalarProperty Name="finished_time" ColumnName="finished_time" />
+                <ScalarProperty Name="finished_date" ColumnName="finished_date" />
+                <ScalarProperty Name="start_user_name" ColumnName="start_user_name" />
+                <ScalarProperty Name="start_user_id" ColumnName="start_user_id" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="process_status" ColumnName="process_status" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="process_code" ColumnName="process_code" />
+                <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+                <ScalarProperty Name="transaction_no" ColumnName="transaction_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tm_group">
+            <EntityTypeMapping TypeName="tooldietrainModel.tm_group">
+              <MappingFragment StoreEntitySet="tm_group">
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tm_job_cal">
+            <EntityTypeMapping TypeName="tooldietrainModel.tm_job_cal">
+              <MappingFragment StoreEntitySet="tm_job_cal">
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tm_rack_mold">
+            <EntityTypeMapping TypeName="tooldietrainModel.tm_rack_mold">
+              <MappingFragment StoreEntitySet="tm_rack_mold">
+                <ScalarProperty Name="update_user" ColumnName="update_user" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="status_use" ColumnName="status_use" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+                <ScalarProperty Name="rack_no" ColumnName="rack_no" />
+                <ScalarProperty Name="proc_name" ColumnName="proc_name" />
+                <ScalarProperty Name="proc_code" ColumnName="proc_code" />
+                <ScalarProperty Name="location_cd" ColumnName="location_cd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tm_rack_part">
+            <EntityTypeMapping TypeName="tooldietrainModel.tm_rack_part">
+              <MappingFragment StoreEntitySet="tm_rack_part">
+                <ScalarProperty Name="update_user" ColumnName="update_user" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="status_use" ColumnName="status_use" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+                <ScalarProperty Name="rack_no" ColumnName="rack_no" />
+                <ScalarProperty Name="proc_name" ColumnName="proc_name" />
+                <ScalarProperty Name="proc_code" ColumnName="proc_code" />
+                <ScalarProperty Name="location_cd" ColumnName="location_cd" />
+                <ScalarProperty Name="transaction_no" ColumnName="transaction_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tm_rack_process">
+            <EntityTypeMapping TypeName="tooldietrainModel.tm_rack_process">
+              <MappingFragment StoreEntitySet="tm_rack_process">
+                <ScalarProperty Name="entry_user" ColumnName="entry_user" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="process_code" ColumnName="process_code" />
+                <ScalarProperty Name="rack_no" ColumnName="rack_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tm_user_id">
+            <EntityTypeMapping TypeName="tooldietrainModel.tm_user_id">
+              <MappingFragment StoreEntitySet="tm_user_id">
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="pw" ColumnName="pw" />
+                <ScalarProperty Name="admin_sign" ColumnName="admin_sign" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="group_cd" ColumnName="group_cd" />
+                <ScalarProperty Name="location_cd" ColumnName="location_cd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tr_job_progress">
+            <EntityTypeMapping TypeName="tooldietrainModel.tr_job_progress">
+              <MappingFragment StoreEntitySet="tr_job_progress">
+                <ScalarProperty Name="est_machine_time" ColumnName="est_machine_time" />
+                <ScalarProperty Name="est_setup_time" ColumnName="est_setup_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="process_code" ColumnName="process_code" />
+                <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tr_main_job">
+            <EntityTypeMapping TypeName="tooldietrainModel.tr_main_job">
+              <MappingFragment StoreEntitySet="tr_main_job">
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="promise_time" ColumnName="promise_time" />
+                <ScalarProperty Name="promise_date" ColumnName="promise_date" />
+                <ScalarProperty Name="due_time" ColumnName="due_time" />
+                <ScalarProperty Name="due_date" ColumnName="due_date" />
+                <ScalarProperty Name="wo_evaluation" ColumnName="wo_evaluation" />
+                <ScalarProperty Name="ref_old_td" ColumnName="ref_old_td" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="product_type_name" ColumnName="product_type_name" />
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="job_type" ColumnName="job_type" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="plant_div_name" ColumnName="plant_div_name" />
+                <ScalarProperty Name="plant_code" ColumnName="plant_code" />
+                <ScalarProperty Name="plant_id" ColumnName="plant_id" />
+                <ScalarProperty Name="cost_code" ColumnName="cost_code" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="customer_oid" ColumnName="customer_oid" />
+                <ScalarProperty Name="wo_no" ColumnName="wo_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tr_sub_job">
+            <EntityTypeMapping TypeName="tooldietrainModel.tr_sub_job">
+              <MappingFragment StoreEntitySet="tr_sub_job">
+                <ScalarProperty Name="type_code" ColumnName="type_code" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="group_type_code" ColumnName="group_type_code" />
+                <ScalarProperty Name="group_type_id" ColumnName="group_type_id" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="cancel_by" ColumnName="cancel_by" />
+                <ScalarProperty Name="cancel_time" ColumnName="cancel_time" />
+                <ScalarProperty Name="cancel_date" ColumnName="cancel_date" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="repair_sub_job_oid" ColumnName="repair_sub_job_oid" />
+                <ScalarProperty Name="repair_qty" ColumnName="repair_qty" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="wo_evaluation" ColumnName="wo_evaluation" />
+                <ScalarProperty Name="ref_sub_workorder" ColumnName="ref_sub_workorder" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="item_part_name" ColumnName="item_part_name" />
+                <ScalarProperty Name="seq_no" ColumnName="seq_no" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ts_process_result">
+            <EntityTypeMapping TypeName="tooldietrainModel.ts_process_result">
+              <MappingFragment StoreEntitySet="ts_process_result">
+                <ScalarProperty Name="transfer_sign" ColumnName="transfer_sign" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="spent_time" ColumnName="spent_time" />
+                <ScalarProperty Name="finished_user" ColumnName="finished_user" />
+                <ScalarProperty Name="finished_time" ColumnName="finished_time" />
+                <ScalarProperty Name="finished_date" ColumnName="finished_date" />
+                <ScalarProperty Name="start_user" ColumnName="start_user" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="update_pgm" ColumnName="update_pgm" />
+                <ScalarProperty Name="machine_code" ColumnName="machine_code" />
+                <ScalarProperty Name="process_code" ColumnName="process_code" />
+                <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+                <ScalarProperty Name="transaction_no" ColumnName="transaction_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tt_assy_stat">
+            <EntityTypeMapping TypeName="tooldietrainModel.tt_assy_stat">
+              <MappingFragment StoreEntitySet="tt_assy_stat">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tt_date_time">
+            <EntityTypeMapping TypeName="tooldietrainModel.tt_date_time">
+              <MappingFragment StoreEntitySet="tt_date_time">
+                <ScalarProperty Name="server_time" ColumnName="server_time" />
+                <ScalarProperty Name="server_date" ColumnName="server_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tt_machine_stat">
+            <EntityTypeMapping TypeName="tooldietrainModel.tt_machine_stat">
+              <MappingFragment StoreEntitySet="tt_machine_stat">
+                <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+                <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+                <ScalarProperty Name="process_code" ColumnName="process_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="td_bite_status">
+            <EntityTypeMapping TypeName="tooldietrainModel.td_bite_status">
+              <MappingFragment StoreEntitySet="td_bite_status">
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="process_code" ColumnName="process_code" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tr_job_progress_log">
+            <EntityTypeMapping TypeName="tooldietrainModel.tr_job_progress_log">
+              <MappingFragment StoreEntitySet="tr_job_progress_log">
+                <ScalarProperty Name="delete_time" ColumnName="delete_time" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="process_code" ColumnName="process_code" />
+                <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tr_process">
+            <EntityTypeMapping TypeName="tooldietrainModel.tr_process">
+              <MappingFragment StoreEntitySet="tr_process">
+                <ScalarProperty Name="del_flag" ColumnName="del_flag" />
+                <ScalarProperty Name="skill_type" ColumnName="skill_type" />
+                <ScalarProperty Name="skip_process_setup" ColumnName="skip_process_setup" />
+                <ScalarProperty Name="standard_time" ColumnName="standard_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="proc_name" ColumnName="proc_name" />
+                <ScalarProperty Name="proc_code" ColumnName="proc_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="td_user_skill">
+            <EntityTypeMapping TypeName="tooldietrainModel.td_user_skill">
+              <MappingFragment StoreEntitySet="td_user_skill">
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="skill_type" ColumnName="skill_type" />
+                <ScalarProperty Name="proc_code" ColumnName="proc_code" />
+                <ScalarProperty Name="evaluation" ColumnName="evaluation" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tr_machine">
+            <EntityTypeMapping TypeName="tooldietrainModel.tr_machine">
+              <MappingFragment StoreEntitySet="tr_machine">
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="proc_code" ColumnName="proc_code" />
+                <ScalarProperty Name="machine_name" ColumnName="machine_name" />
+                <ScalarProperty Name="machine_code" ColumnName="machine_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

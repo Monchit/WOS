@@ -1,0 +1,56 @@
+﻿
+<link href="~/Content/Bootstrap_Table.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSubmit").click(function () {
+            var comment = $.trim($('#txaComment').val());
+            if (comment.length > 0) {
+                document.forms["formAdd"].submit();
+                @*var obj = new Object();
+                obj.main = $("#hdMain").val();
+                obj.sub = $("#hdSub").val();
+                obj.mark = $("#hdMark").val();
+                obj.comment = comment;
+                $.post('@Url.Action("AddComment","Home")', obj, function (data) {
+                    window.alert("Update Comment " + data.Result);
+                });*@
+            } else {
+                alert("Comment is Empty.");
+                return false;
+            }
+        });
+    });
+</script>
+<style>
+    .thead {
+        font-weight: bold;
+        vertical-align:text-top;
+    }
+</style>
+
+<form id="formAdd" name="formAdd" method="post" action="@Url.Action("AddComment","Home")">
+    <table class="table table-condensed">
+        <tr>
+            <td class="thead">Main Job </td>
+            <td>@ViewBag.MainJob</td>
+        </tr>
+        <tr>
+            <td class="thead">Sub Job</td>
+            <td>@ViewBag.SubJob</td>
+        </tr>
+        <tr>
+            <td class="thead">Marking Step</td>
+            <td>@ViewBag.Marking</td>
+        </tr>
+        <tr>
+            <td class="thead">Comment </td>
+            <td><textarea rows="4" style="width:250px;" id="txaComment" name="txaComment">@ViewBag.Comment</textarea></td>
+        </tr>
+        <tr>
+            <td><input type="hidden" id="hdMain" name="hdMain" value="@ViewBag.MainJob" />
+                <input type="hidden" id="hdSub" name="hdSub" value="@ViewBag.SubJob" />
+                <input type="hidden" id="hdMark" name="hdMark" value="@ViewBag.Marking" /></td>
+            <td><input type="button" id="btnSubmit" class="btn" value="Submit" /></td>
+        </tr>
+    </table>
+</form>
