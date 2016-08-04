@@ -30,8 +30,7 @@ namespace WOS.Controllers
             return View();
         }
 
-    //    //
-    //    // POST: /Account/Login
+        // POST: /Account/Login
 
         [HttpPost]
         //[AllowAnonymous]

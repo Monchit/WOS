@@ -98,12 +98,12 @@ namespace WOS.Controllers
 
             if (!string.IsNullOrEmpty(txtMainWO))
             {
-                query = query.Where(w => w.wo_no.Trim() == txtMainWO.Trim());
+                query = query.Where(w => w.wo_no.Trim() == txtMainWO.Trim().ToUpper());
             }
 
             if (!string.IsNullOrEmpty(txtOldTD))
             {
-                query = query.Where(w => w.ref_old_td.Trim() == txtOldTD.Trim());
+                query = query.Where(w => w.ref_old_td.Trim() == txtOldTD.Trim().ToUpper());
             }
 
             if (!string.IsNullOrEmpty(txtDateFrom) && !string.IsNullOrEmpty(txtDateTo))
@@ -758,7 +758,7 @@ namespace WOS.Controllers
                         NewTimeFormat(q.start_time),
                         NewTimeFormat(q.finished_time),
                         //spend_time = CalSpendTime(q.start_date, q.start_time, q.finished_date, q.finished_time),
-                        CalSpendTime(NewDateFormat(q.start_date),NewTimeFormat(q.start_time),
+                        CalSpendTimetoMinute(NewDateFormat(q.start_date),NewTimeFormat(q.start_time),
                         NewDateFormat(q.finished_date),NewTimeFormat(q.finished_time)),
                         NewDateFormat(q.finished_date),
                         q.start_user_name,
@@ -1797,7 +1797,7 @@ namespace WOS.Controllers
                         from d in g2.DefaultIfEmpty()
                         join e in dbTooldie.tr_process on a.process_code equals e.proc_code into g3
                         from e in g3.DefaultIfEmpty()
-                        join f in dbTooldie.tr_machine on a.machine_no equals f.machine_code into g4
+                        join f in dbTooldie.tr_machine on new { mc = a.machine_no, pc = a.process_code } equals new { mc = f.machine_code, pc = f.proc_code } into g4
                         from f in g4.DefaultIfEmpty()
                         orderby a.main_job_no, a.sub_job_no, a.marking_step
                         select new
@@ -1957,7 +1957,7 @@ namespace WOS.Controllers
                         Start_Time = s.start_time,
                         Finish_Date = s.finished_date,
                         Finish_Time = s.finished_time,
-                        Spend_Time = CalSpendTime(s.start_date, s.start_time, s.finished_date, s.finished_time),
+                        Spend_Time = CalSpendTimetoMinute(s.start_date, s.start_time, s.finished_date, s.finished_time),
                         Machine = s.machine_name,
                         Operator = s.finished_user_name,
                         Comment = s.comment_process

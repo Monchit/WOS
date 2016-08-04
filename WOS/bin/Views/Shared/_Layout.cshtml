@@ -86,7 +86,7 @@
                 
 				<li>@Html.ActionLink("Rack Mold", "Rack_Mold", "Home")</li>
                 <li>@Html.ActionLink("Rack Part", "Rack_Part", "Home")</li>
-                @if (Session["userAdmin"].ToString() == "4")
+                @if (Session["userAdmin"].ToString() == "3")
                 {
                     <li>@Html.ActionLink("Process Time", "Process_Time", "Home")</li>
                     <li>@Html.ActionLink("Set User Skill", "UserSkill", "Home")</li>
