@@ -9,6 +9,33 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>\\webtest\wos</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="bin/amd64/Microsoft.VC90.CRT/Microsoft.VC90.CRT.manifest">
+      <publishTime>02/14/2017 10:51:57</publishTime>
+    </File>
+    <File Include="bin/amd64/Microsoft.VC90.CRT/msvcr90.dll">
+      <publishTime>02/14/2017 10:51:57</publishTime>
+    </File>
+    <File Include="bin/amd64/Microsoft.VC90.CRT/README_ENU.txt">
+      <publishTime>02/14/2017 10:51:57</publishTime>
+    </File>
+    <File Include="bin/amd64/sqlceca40.dll">
+      <publishTime>02/14/2017 10:51:57</publishTime>
+    </File>
+    <File Include="bin/amd64/sqlcecompact40.dll">
+      <publishTime>02/14/2017 10:51:57</publishTime>
+    </File>
+    <File Include="bin/amd64/sqlceer40EN.dll">
+      <publishTime>02/14/2017 10:51:57</publishTime>
+    </File>
+    <File Include="bin/amd64/sqlceme40.dll">
+      <publishTime>02/14/2017 10:51:57</publishTime>
+    </File>
+    <File Include="bin/amd64/sqlceqp40.dll">
+      <publishTime>02/14/2017 10:51:57</publishTime>
+    </File>
+    <File Include="bin/amd64/sqlcese40.dll">
+      <publishTime>02/14/2017 10:51:57</publishTime>
+    </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>12/10/2013 08:39:47</publishTime>
     </File>
@@ -31,7 +58,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/10/2013 08:39:46</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>12/10/2013 08:39:32</publishTime>
+      <publishTime>02/17/2017 15:25:16</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>02/14/2017 10:51:51</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServerCompact.dll">
+      <publishTime>02/14/2017 10:51:53</publishTime>
     </File>
     <File Include="bin/EPPlus.dll">
       <publishTime>11/18/2013 08:32:20</publishTime>
@@ -41,6 +74,189 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/Gma.QrCodeNet.Encoding.dll">
       <publishTime>01/10/2014 11:24:57</publishTime>
+    </File>
+    <File Include="bin/Images/accent.png">
+      <publishTime>10/12/2013 08:39:29</publishTime>
+    </File>
+    <File Include="bin/Images/accepted_48.png">
+      <publishTime>06/12/2014 12:18:56</publishTime>
+    </File>
+    <File Include="bin/Images/add16.png">
+      <publishTime>06/16/2014 15:19:50</publishTime>
+    </File>
+    <File Include="bin/Images/arrow-blue.png">
+      <publishTime>12/19/2013 08:48:51</publishTime>
+    </File>
+    <File Include="bin/Images/artwork-pattern.png">
+      <publishTime>10/12/2013 10:02:03</publishTime>
+    </File>
+    <File Include="bin/Images/bar-code-icon.png">
+      <publishTime>03/12/2014 11:33:30</publishTime>
+    </File>
+    <File Include="bin/Images/barcode-2d-icon.png">
+      <publishTime>01/13/2014 14:14:50</publishTime>
+    </File>
+    <File Include="bin/Images/Barcode-icon.png">
+      <publishTime>12/19/2013 09:29:38</publishTime>
+    </File>
+    <File Include="bin/Images/bullet.png">
+      <publishTime>10/12/2013 08:39:29</publishTime>
+    </File>
+    <File Include="bin/Images/Button-Delete-icon24.png">
+      <publishTime>06/12/2014 14:06:37</publishTime>
+    </File>
+    <File Include="bin/Images/Button-Ok-icon24.png">
+      <publishTime>06/12/2014 14:06:37</publishTime>
+    </File>
+    <File Include="bin/Images/cancel_48.png">
+      <publishTime>06/12/2014 12:18:56</publishTime>
+    </File>
+    <File Include="bin/Images/company-logo.png">
+      <publishTime>10/12/2013 10:02:03</publishTime>
+    </File>
+    <File Include="bin/Images/delete16.png">
+      <publishTime>06/16/2014 15:19:50</publishTime>
+    </File>
+    <File Include="bin/Images/edit16.png">
+      <publishTime>06/16/2014 15:19:50</publishTime>
+    </File>
+    <File Include="bin/Images/Excel-icon.png">
+      <publishTime>12/19/2013 11:47:31</publishTime>
+    </File>
+    <File Include="bin/Images/heroAccent.png">
+      <publishTime>10/12/2013 08:39:29</publishTime>
+    </File>
+    <File Include="bin/Images/icons/Button-Blank-Green-icon.png">
+      <publishTime>01/08/2014 12:22:11</publishTime>
+    </File>
+    <File Include="bin/Images/icons/Button-Blank-Red-icon.png">
+      <publishTime>01/08/2014 12:14:04</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_add.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_cancel.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_delete.png">
+      <publishTime>01/08/2014 10:32:55</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_download.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_edit.png">
+      <publishTime>01/08/2014 14:04:38</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_favorite.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_left.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_lock.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_power.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_print.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_refresh.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_right.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_settings.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_upload.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_up_circle.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/icons/ic_zoom.png">
+      <publishTime>10/12/2013 09:30:02</publishTime>
+    </File>
+    <File Include="bin/Images/keyboard-icon.png">
+      <publishTime>12/19/2013 09:34:15</publishTime>
+    </File>
+    <File Include="bin/Images/Loading.GIF">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Images/login-icon.png">
+      <publishTime>10/12/2013 10:02:03</publishTime>
+    </File>
+    <File Include="bin/Images/menu-dark-indicator.png">
+      <publishTime>10/12/2013 10:02:03</publishTime>
+    </File>
+    <File Include="bin/Images/menu-indicator.png">
+      <publishTime>10/12/2013 10:02:03</publishTime>
+    </File>
+    <File Include="bin/Images/NOK-logo.jpg">
+      <publishTime>10/12/2013 14:44:21</publishTime>
+    </File>
+    <File Include="bin/Images/orderedList0.png">
+      <publishTime>10/12/2013 08:39:29</publishTime>
+    </File>
+    <File Include="bin/Images/orderedList1.png">
+      <publishTime>10/12/2013 08:39:29</publishTime>
+    </File>
+    <File Include="bin/Images/orderedList2.png">
+      <publishTime>10/12/2013 08:39:29</publishTime>
+    </File>
+    <File Include="bin/Images/orderedList3.png">
+      <publishTime>10/12/2013 08:39:29</publishTime>
+    </File>
+    <File Include="bin/Images/orderedList4.png">
+      <publishTime>10/12/2013 08:39:29</publishTime>
+    </File>
+    <File Include="bin/Images/orderedList5.png">
+      <publishTime>10/12/2013 08:39:29</publishTime>
+    </File>
+    <File Include="bin/Images/orderedList6.png">
+      <publishTime>10/12/2013 08:39:29</publishTime>
+    </File>
+    <File Include="bin/Images/orderedList7.png">
+      <publishTime>10/12/2013 08:39:30</publishTime>
+    </File>
+    <File Include="bin/Images/orderedList8.png">
+      <publishTime>10/12/2013 08:39:30</publishTime>
+    </File>
+    <File Include="bin/Images/orderedList9.png">
+      <publishTime>10/12/2013 08:39:30</publishTime>
+    </File>
+    <File Include="bin/Images/print.png">
+      <publishTime>01/09/2014 08:54:49</publishTime>
+    </File>
+    <File Include="bin/Images/rack-status.png">
+      <publishTime>01/09/2014 16:37:37</publishTime>
+    </File>
+    <File Include="bin/Images/search-icon.png">
+      <publishTime>12/18/2013 14:22:07</publishTime>
+    </File>
+    <File Include="bin/Images/search16.png">
+      <publishTime>06/16/2014 15:19:50</publishTime>
+    </File>
+    <File Include="bin/Images/separator-bg.png">
+      <publishTime>10/12/2013 10:02:03</publishTime>
+    </File>
+    <File Include="bin/Images/tab-dashboard.png">
+      <publishTime>10/12/2013 10:01:58</publishTime>
+    </File>
+    <File Include="bin/Images/Trash-can-icon.png">
+      <publishTime>01/09/2014 08:35:22</publishTime>
+    </File>
+    <File Include="bin/Images/WOS-logo-login.png">
+      <publishTime>12/17/2016 11:24:34</publishTime>
+    </File>
+    <File Include="bin/Images/WOS-logo.png">
+      <publishTime>12/18/2013 11:15:36</publishTime>
+    </File>
+    <File Include="bin/Images/WOS-logo2.png">
+      <publishTime>12/16/2016 16:45:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>12/10/2013 08:39:39</publishTime>
@@ -53,6 +269,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>12/10/2013 08:39:40</publishTime>
+    </File>
+    <File Include="bin/System.Data.SqlServerCe.dll">
+      <publishTime>02/14/2017 10:51:51</publishTime>
     </File>
     <File Include="bin/System.Linq.Dynamic.dll">
       <publishTime>12/13/2013 13:46:32</publishTime>
@@ -88,10 +307,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/10/2013 08:39:41</publishTime>
     </File>
     <File Include="bin/Views/Home/WoStatus.cshtml">
-      <publishTime>09/21/2015 10:36:37</publishTime>
+      <publishTime>02/13/2017 11:53:03</publishTime>
+    </File>
+    <File Include="bin/Views/Shared/_Layout.cshtml">
+      <publishTime>12/16/2016 16:55:21</publishTime>
     </File>
     <File Include="bin/WebCommonFunction.dll">
-      <publishTime>09/22/2015 10:29:05</publishTime>
+      <publishTime>11/09/2016 16:57:57</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>12/10/2013 08:39:47</publishTime>
@@ -103,7 +325,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/10/2013 08:39:44</publishTime>
     </File>
     <File Include="bin/WOS.dll">
-      <publishTime>09/24/2015 10:07:28</publishTime>
+      <publishTime>02/17/2017 15:42:44</publishTime>
+    </File>
+    <File Include="bin/x86/Microsoft.VC90.CRT/Microsoft.VC90.CRT.manifest">
+      <publishTime>02/14/2017 10:51:57</publishTime>
+    </File>
+    <File Include="bin/x86/Microsoft.VC90.CRT/msvcr90.dll">
+      <publishTime>02/14/2017 10:51:58</publishTime>
+    </File>
+    <File Include="bin/x86/Microsoft.VC90.CRT/README_ENU.txt">
+      <publishTime>02/14/2017 10:51:58</publishTime>
+    </File>
+    <File Include="bin/x86/sqlceca40.dll">
+      <publishTime>02/14/2017 10:51:58</publishTime>
+    </File>
+    <File Include="bin/x86/sqlcecompact40.dll">
+      <publishTime>02/14/2017 10:51:58</publishTime>
+    </File>
+    <File Include="bin/x86/sqlceer40EN.dll">
+      <publishTime>02/14/2017 10:51:58</publishTime>
+    </File>
+    <File Include="bin/x86/sqlceme40.dll">
+      <publishTime>02/14/2017 10:51:58</publishTime>
+    </File>
+    <File Include="bin/x86/sqlceqp40.dll">
+      <publishTime>02/14/2017 10:51:58</publishTime>
+    </File>
+    <File Include="bin/x86/sqlcese40.dll">
+      <publishTime>02/14/2017 10:51:58</publishTime>
     </File>
     <File Include="Content/bootstrap-responsive.css">
       <publishTime>02/26/2015 12:02:50</publishTime>
@@ -119,6 +368,21 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/Bootstrap_Table.css">
       <publishTime>06/11/2014 09:19:34</publishTime>
+    </File>
+    <File Include="Content/CenturyGothic/CenturyGothic.eot">
+      <publishTime>12/16/2016 15:50:45</publishTime>
+    </File>
+    <File Include="Content/CenturyGothic/CenturyGothic.svg">
+      <publishTime>12/16/2016 15:50:45</publishTime>
+    </File>
+    <File Include="Content/CenturyGothic/CenturyGothic.ttf">
+      <publishTime>12/16/2016 15:50:45</publishTime>
+    </File>
+    <File Include="Content/CenturyGothic/CenturyGothic.woff">
+      <publishTime>12/16/2016 15:50:45</publishTime>
+    </File>
+    <File Include="Content/CenturyGothic/styles.css">
+      <publishTime>12/16/2016 15:57:46</publishTime>
     </File>
     <File Include="Content/form-validator.css">
       <publishTime>10/09/2014 12:31:15</publishTime>
@@ -151,7 +415,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/10/2013 08:39:29</publishTime>
     </File>
     <File Include="Content/style.css">
-      <publishTime>10/15/2014 16:12:57</publishTime>
+      <publishTime>12/16/2016 16:13:55</publishTime>
     </File>
     <File Include="Content/Style2.css">
       <publishTime>12/14/2013 10:44:43</publishTime>
@@ -565,16 +829,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/09/2014 08:35:22</publishTime>
     </File>
     <File Include="Images/WOS-logo-login.png">
-      <publishTime>12/18/2013 12:03:02</publishTime>
+      <publishTime>12/17/2016 11:24:34</publishTime>
     </File>
     <File Include="Images/WOS-logo.png">
       <publishTime>12/18/2013 11:15:36</publishTime>
     </File>
+    <File Include="Images/WOS-logo2.png">
+      <publishTime>12/16/2016 16:45:54</publishTime>
+    </File>
     <File Include="Models/dbTooldie.edmx.diagram">
-      <publishTime>02/03/2015 14:32:03</publishTime>
+      <publishTime>09/25/2015 10:47:22</publishTime>
+    </File>
+    <File Include="Models/dbTooldie1.edmx.diagram">
+      <publishTime>02/17/2017 14:55:58</publishTime>
+    </File>
+    <File Include="Models/tooldietrain.edmx.diagram">
+      <publishTime>02/13/2017 12:02:47</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>03/13/2014 09:55:46</publishTime>
+      <publishTime>02/17/2017 15:25:17</publishTime>
     </File>
     <File Include="Scripts/i18n/grid.locale-ar.js">
       <publishTime>12/12/2013 13:51:36</publishTime>
@@ -1189,13 +1462,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/10/2013 08:39:30</publishTime>
     </File>
     <File Include="Views/Home/Chk_WO.cshtml">
-      <publishTime>02/24/2015 08:51:21</publishTime>
+      <publishTime>09/25/2015 10:49:31</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>12/10/2013 08:39:30</publishTime>
     </File>
     <File Include="Views/Home/Daily_ScanReport.cshtml">
-      <publishTime>01/12/2015 11:06:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Home/GroupMaster.cshtml">
       <publishTime>06/09/2014 15:59:25</publishTime>
@@ -1219,7 +1492,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/03/2015 14:23:24</publishTime>
     </File>
     <File Include="Views/Home/WoStatus.cshtml">
-      <publishTime>09/21/2015 10:36:37</publishTime>
+      <publishTime>02/13/2017 11:53:03</publishTime>
     </File>
     <File Include="Views/Home/_AddComment.cshtml">
       <publishTime>06/16/2014 13:36:41</publishTime>
@@ -1234,10 +1507,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/10/2013 08:39:30</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/07/2015 09:32:52</publishTime>
+      <publishTime>12/16/2016 16:55:21</publishTime>
     </File>
     <File Include="Views/Shared/_Layout_Login.cshtml">
-      <publishTime>12/19/2013 09:28:39</publishTime>
+      <publishTime>12/17/2016 09:28:49</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>12/10/2013 15:43:23</publishTime>
@@ -1249,7 +1522,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/10/2013 12:03:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/08/2015 10:02:18</publishTime>
+      <publishTime>02/17/2017 15:38:57</publishTime>
     </File>
   </ItemGroup>
 </Project>

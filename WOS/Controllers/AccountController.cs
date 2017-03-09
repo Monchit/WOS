@@ -17,7 +17,7 @@ namespace WOS.Controllers
     //[InitializeSimpleMembership]
     public class AccountController : Controller
     {
-        tooldietrainEntities dbTooldie = new tooldietrainEntities();
+        tooldieliveEntities dbTooldie = new tooldieliveEntities();
         WOS.Models.Util util = new WOS.Models.Util();
 
         //
@@ -26,11 +26,8 @@ namespace WOS.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-            //ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
-        // POST: /Account/Login
 
         [HttpPost]
         //[AllowAnonymous]

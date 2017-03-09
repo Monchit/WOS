@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="tooldietrainModel.tm_rack_process" Width="1.5" PointX="7.375" PointY="17.125" />
         <EntityTypeShape EntityType="tooldietrainModel.tm_user_id" Width="1.5" PointX="5.25" PointY="11.75" />
         <EntityTypeShape EntityType="tooldietrainModel.tr_job_progress" Width="1.5" PointX="2.625" PointY="23.5" />
-        <EntityTypeShape EntityType="tooldietrainModel.tr_machine" Width="1.5" PointX="9.5" PointY="13.5" />
         <EntityTypeShape EntityType="tooldietrainModel.tr_main_job" Width="1.5" PointX="11.625" PointY="11.75" />
         <EntityTypeShape EntityType="tooldietrainModel.tr_sub_job" Width="1.5" PointX="3" PointY="11.75" />
         <EntityTypeShape EntityType="tooldietrainModel.ts_process_result" Width="1.5" PointX="7.375" PointY="11.75" />
@@ -25,6 +24,7 @@
         <EntityTypeShape EntityType="tooldietrainModel.tr_job_progress_log" Width="1.5" PointX="7.375" PointY="8.125" />
         <EntityTypeShape EntityType="tooldietrainModel.tr_process" Width="1.5" PointX="6.375" PointY="23.5" />
         <EntityTypeShape EntityType="tooldietrainModel.td_user_skill" Width="1.5" PointX="4.5" PointY="23.5" />
+        <EntityTypeShape EntityType="tooldietrainModel.tr_machine" Width="1.5" PointX="9.5" PointY="13.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

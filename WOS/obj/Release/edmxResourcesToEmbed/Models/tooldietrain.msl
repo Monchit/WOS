@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tooldietrainModel1StoreContainer" CdmEntityContainer="tooldietrainEntities1">
+    <EntitySetMapping Name="td_job_progress">
+      <EntityTypeMapping TypeName="tooldietrainModel1.td_job_progress">
+        <MappingFragment StoreEntitySet="td_job_progress">
+          <ScalarProperty Name="transaction_no" ColumnName="transaction_no" />
+          <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+          <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+          <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+          <ScalarProperty Name="process_code" ColumnName="process_code" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="process_status" ColumnName="process_status" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="start_user_id" ColumnName="start_user_id" />
+          <ScalarProperty Name="start_user_name" ColumnName="start_user_name" />
+          <ScalarProperty Name="finished_date" ColumnName="finished_date" />
+          <ScalarProperty Name="finished_time" ColumnName="finished_time" />
+          <ScalarProperty Name="finished_user_id" ColumnName="finished_user_id" />
+          <ScalarProperty Name="finished_user_name" ColumnName="finished_user_name" />
+          <ScalarProperty Name="transfer_sign" ColumnName="transfer_sign" />
+          <ScalarProperty Name="status_auto_cal" ColumnName="status_auto_cal" />
+          <ScalarProperty Name="group_no" ColumnName="group_no" />
+          <ScalarProperty Name="type_est" ColumnName="type_est" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

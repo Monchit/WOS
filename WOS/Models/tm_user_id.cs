@@ -24,5 +24,6 @@ namespace WOS.Models
         public string entry_date { get; set; }
         public string rank { get; set; }
         public string full_name { get; set; }
+        public string admin_sign_barcode { get; set; }
     }
 }

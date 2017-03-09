@@ -34,5 +34,6 @@ namespace WOS.Models
         public Nullable<int> spent_time { get; set; }
         public string remark { get; set; }
         public string transfer_sign { get; set; }
+        public string type_est { get; set; }
     }
 }

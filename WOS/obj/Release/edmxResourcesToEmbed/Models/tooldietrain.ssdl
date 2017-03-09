@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tooldietrainModel1.Store" Alias="Self" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 9.1.7" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="tooldietrainModel1StoreContainer">
+    <EntitySet Name="td_job_progress" EntityType="tooldietrainModel1.Store.td_job_progress" store:Type="Tables" Schema="public" />
+  </EntityContainer>
+  <EntityType Name="td_job_progress">
+    <Key>
+      <PropertyRef Name="transaction_no" />
+    </Key>
+    <Property Name="transaction_no" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="main_job_no" Type="char" MaxLength="20" />
+    <Property Name="sub_job_no" Type="char" MaxLength="20" />
+    <Property Name="marking_step" Type="int" />
+    <Property Name="process_code" Type="char" MaxLength="50" />
+    <Property Name="qty" Type="int" />
+    <Property Name="machine_no" Type="char" MaxLength="10" />
+    <Property Name="entry_date" Type="char" MaxLength="8" />
+    <Property Name="entry_time" Type="char" MaxLength="6" />
+    <Property Name="update_date" Type="char" MaxLength="8" />
+    <Property Name="update_time" Type="char" MaxLength="6" />
+    <Property Name="process_status" Type="char" MaxLength="1" />
+    <Property Name="start_date" Type="char" MaxLength="8" />
+    <Property Name="start_time" Type="char" MaxLength="6" />
+    <Property Name="start_user_id" Type="char" MaxLength="6" />
+    <Property Name="start_user_name" Type="char" MaxLength="50" />
+    <Property Name="finished_date" Type="char" MaxLength="8" />
+    <Property Name="finished_time" Type="char" MaxLength="6" />
+    <Property Name="finished_user_id" Type="char" MaxLength="6" />
+    <Property Name="finished_user_name" Type="char" MaxLength="50" />
+    <Property Name="transfer_sign" Type="char" MaxLength="1" />
+    <Property Name="status_auto_cal" Type="char" MaxLength="1" />
+    <Property Name="group_no" Type="char" MaxLength="10" />
+    <Property Name="type_est" Type="char" MaxLength="2" />
+  </EntityType>
+</Schema>

@@ -16,10 +16,11 @@
 	
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
 	<script src="~/Scripts/script.js"></script>
-
+    
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/jTable")
     @Styles.Render("~/Content/themes/base/css")
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jTable")
@@ -35,7 +36,7 @@
 		
 		<div class="page-full-width cf">
             
-            <img src="~/Images/WOS-logo.png" />
+            <img src="~/Images/WOS-logo2.png" alt="Logo" />
 
 			<ul id="nav" class="fr">
 	
@@ -86,7 +87,7 @@
                 
 				<li>@Html.ActionLink("Rack Mold", "Rack_Mold", "Home")</li>
                 <li>@Html.ActionLink("Rack Part", "Rack_Part", "Home")</li>
-                @if (Session["userAdmin"].ToString() == "4")
+                @if (Session["userAdmin"].ToString() == "3")
                 {
                     <li>@Html.ActionLink("Process Time", "Process_Time", "Home")</li>
                     <li>@Html.ActionLink("Set User Skill", "UserSkill", "Home")</li>

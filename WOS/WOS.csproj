@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FileTypeDetective">
       <HintPath>..\packages\FileTypeDetective.1.0.0.0\lib\net40\FileTypeDetective.dll</HintPath>
     </Reference>
@@ -74,9 +78,6 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -173,11 +174,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Data\App_Start\AuthConfig.cs" />
-    <Compile Include="App_Data\App_Start\BundleConfig.cs" />
-    <Compile Include="App_Data\App_Start\FilterConfig.cs" />
-    <Compile Include="App_Data\App_Start\RouteConfig.cs" />
-    <Compile Include="App_Data\App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -200,65 +201,110 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbTooldie.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\dbTooldie1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbTooldie1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbTooldie1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbTooldie1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbTooldie1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\td_bite_status.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\td_comment.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\td_job_progress.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\td_user_skill.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tm_bt_version_ctrl.cs">
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tm_cutoff_date.cs">
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tm_group.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tm_group_type.cs">
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tm_job_cal.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tm_master_menu.cs">
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tm_rack_mold.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tm_rack_part.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tm_rack_process.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tm_type.cs">
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tm_user_id.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tooldietrain.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tooldietrain.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tooldietrain.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tooldietrain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tooldietrain.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tooldietrain.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\tr_job_progress.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tr_job_progress_log.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tr_machine.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tr_main_job.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tr_process.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tr_sub_job.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ts_process_result.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tt_assy_stat.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tt_date_time.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tt_machine_stat.cs">
-      <DependentUpon>dbTooldie.tt</DependentUpon>
+      <DependentUpon>dbTooldie1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -270,6 +316,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Bootstrap_Table.css" />
+    <Content Include="Content\CenturyGothic\CenturyGothic.svg" />
+    <Content Include="Content\CenturyGothic\styles.css" />
     <Content Include="Content\form-validator.css" />
     <Content Include="Content\form-validator\ajax-loader.gif" />
     <Content Include="Content\form-validator\icon-fail.png" />
@@ -500,10 +548,30 @@
     </Content>
     <Content Include="Content\Login\s-BiyweUPV0v-yRb-cjciFQlYEbsez9cZjKsNMjLOwM.eot" />
     <Content Include="Content\Login\s-BiyweUPV0v-yRb-cjciBsxEYwM7FgeyaSgU71cLG0.woff" />
+    <EntityDeploy Include="Models\dbTooldie1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbTooldie1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\dbTooldie1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbTooldie1.edmx</DependentUpon>
+      <LastGenOutput>dbTooldie1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\dbTooldie1.edmx.diagram">
+      <DependentUpon>dbTooldie1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\dbTooldie1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbTooldie1.edmx</DependentUpon>
+      <LastGenOutput>dbTooldie1.cs</LastGenOutput>
+    </Content>
     <EntityDeploy Include="Models\dbTooldie.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>dbTooldie.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\WOS-logo2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Models\dbTooldie.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>dbTooldie.edmx</DependentUpon>
@@ -517,10 +585,31 @@
       <DependentUpon>dbTooldie.edmx</DependentUpon>
       <LastGenOutput>dbTooldie.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\CenturyGothic\CenturyGothic.eot" />
+    <Content Include="Content\CenturyGothic\CenturyGothic.ttf" />
+    <Content Include="Content\CenturyGothic\CenturyGothic.woff" />
+    <EntityDeploy Include="Models\tooldietrain.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>tooldietrain.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\tooldietrain.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>tooldietrain.edmx</DependentUpon>
+      <LastGenOutput>tooldietrain.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\tooldietrain.edmx.diagram">
+      <DependentUpon>tooldietrain.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\tooldietrain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>tooldietrain.edmx</DependentUpon>
+      <LastGenOutput>tooldietrain.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\tddb_new.pubxml" />
     <None Include="Properties\PublishProfiles\tddb_test.pubxml" />
     <None Include="Properties\PublishProfiles\tdweb.pubxml" />
     <None Include="Properties\PublishProfiles\tooldiedb.pubxml" />
+    <None Include="Properties\PublishProfiles\tooldietrain.pubxml" />
     <None Include="Properties\PublishProfiles\wos_test.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\i18n\grid.locale-ar.js" />
@@ -802,15 +891,14 @@
     <Content Include="Stuff\BogyTemplate.xlsx" />
     <Content Include="Views\Home\Process_Time.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

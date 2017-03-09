@@ -136,19 +136,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tr_machine">
-      <EntityTypeMapping TypeName="tooldietrainModel.tr_machine">
-        <MappingFragment StoreEntitySet="tr_machine">
-          <ScalarProperty Name="update_time" ColumnName="update_time" />
-          <ScalarProperty Name="update_date" ColumnName="update_date" />
-          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
-          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
-          <ScalarProperty Name="proc_code" ColumnName="proc_code" />
-          <ScalarProperty Name="machine_name" ColumnName="machine_name" />
-          <ScalarProperty Name="machine_code" ColumnName="machine_code" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tr_main_job">
       <EntityTypeMapping TypeName="tooldietrainModel.tr_main_job">
         <MappingFragment StoreEntitySet="tr_main_job">
@@ -183,6 +170,10 @@
     <EntitySetMapping Name="tr_sub_job">
       <EntityTypeMapping TypeName="tooldietrainModel.tr_sub_job">
         <MappingFragment StoreEntitySet="tr_sub_job">
+          <ScalarProperty Name="type_code" ColumnName="type_code" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="group_type_code" ColumnName="group_type_code" />
+          <ScalarProperty Name="group_type_id" ColumnName="group_type_id" />
           <ScalarProperty Name="update_time" ColumnName="update_time" />
           <ScalarProperty Name="update_date" ColumnName="update_date" />
           <ScalarProperty Name="entry_time" ColumnName="entry_time" />
@@ -318,6 +309,19 @@
           <ScalarProperty Name="proc_code" ColumnName="proc_code" />
           <ScalarProperty Name="evaluation" ColumnName="evaluation" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tr_machine">
+      <EntityTypeMapping TypeName="tooldietrainModel.tr_machine">
+        <MappingFragment StoreEntitySet="tr_machine">
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="proc_code" ColumnName="proc_code" />
+          <ScalarProperty Name="machine_name" ColumnName="machine_name" />
+          <ScalarProperty Name="machine_code" ColumnName="machine_code" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

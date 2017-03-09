@@ -13,6 +13,9 @@
 /* ---------- Based upon 'reset.css' in the 
 Yahoo! User Interface Library: 
 http://developer.yahoo.com/yui ---------- */
+
+@import url('CenturyGothic/styles.css');
+
 *, html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, 
 h5, h6, pre, form, label, fieldset, input, p, blockquote, th, td {
 	margin: 0;
@@ -48,9 +51,6 @@ a { text-decoration: none; }
 body { font-size: 1em; /* Prevents an IE bug where em's scale out of proportion */ }
 
 
-
-
-
 /* ---------- CLEARFIX ---------- */
 /* For modern browsers */
 .cf:before,
@@ -63,9 +63,6 @@ body { font-size: 1em; /* Prevents an IE bug where em's scale out of proportion 
 
 /* For IE 6/7 (trigger hasLayout) */
 .cf { zoom: 1; }
-
-
-
 
 
 /* ---------- GENERAL ---------- */
@@ -135,18 +132,15 @@ cite {
 
 
 
-
-
-
 /* ---------- TYPOGRAPHY ---------- */
 body, form {
-	font-family: "Droid Sans", Helvetica, Arial, sans-serif;
-	line-height: 1.125em; /* 18/16 */
+	font-family: 'century-gothic', Helvetica, Arial, sans-serif;
+	line-height: 1.1em; /* 18/16 */
 }
 
 p, .button, form input, ul#nav li ul, ul#tabs, div.side-menu ul li a,
 .information-box, .confirmation-box, .error-box, .warning-box, ol, .regular-ul, 
-.custom-ul, blockquote, cite { font-size: 0.75em; /* 12/16 */ }
+.custom-ul, blockquote, cite { font-size: 0.8em; /* 12/16 */ }
 
 div.content-module-heading span { font-size: 0.625em; /* 10/16 */ }
 

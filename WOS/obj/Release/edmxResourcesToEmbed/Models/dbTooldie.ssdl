@@ -202,10 +202,11 @@
   <EntityType Name="tr_machine">
     <Key>
       <PropertyRef Name="machine_code" />
+      <PropertyRef Name="proc_code" />
     </Key>
     <Property Name="machine_code" Type="char" Nullable="false" MaxLength="10" />
     <Property Name="machine_name" Type="char" Nullable="false" MaxLength="100" />
-    <Property Name="proc_code" Type="char" MaxLength="10" />
+    <Property Name="proc_code" Type="char" Nullable="false" MaxLength="10" />
     <Property Name="entry_date" Type="char" MaxLength="8" />
     <Property Name="entry_time" Type="char" MaxLength="6" />
     <Property Name="update_date" Type="char" MaxLength="8" />
@@ -281,6 +282,10 @@
     <Property Name="entry_time" Type="char" MaxLength="6" />
     <Property Name="update_date" Type="char" MaxLength="8" />
     <Property Name="update_time" Type="char" MaxLength="6" />
+    <Property Name="group_type_id" Type="int" />
+    <Property Name="group_type_code" Type="char" MaxLength="50" />
+    <Property Name="type_id" Type="int" />
+    <Property Name="type_code" Type="char" MaxLength="50" />
   </EntityType>
   <EntityType Name="ts_process_result">
     <Key>

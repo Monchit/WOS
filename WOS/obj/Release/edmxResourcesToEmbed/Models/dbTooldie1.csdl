@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tooldieliveModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="tooldieliveEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="td_bite_status" EntityType="tooldieliveModel.td_bite_status" />
+    <EntitySet Name="td_comment" EntityType="tooldieliveModel.td_comment" />
+    <EntitySet Name="td_job_progress" EntityType="tooldieliveModel.td_job_progress" />
+    <EntitySet Name="td_user_skill" EntityType="tooldieliveModel.td_user_skill" />
+    <EntitySet Name="tm_bt_version_ctrl" EntityType="tooldieliveModel.tm_bt_version_ctrl" />
+    <EntitySet Name="tm_cutoff_date" EntityType="tooldieliveModel.tm_cutoff_date" />
+    <EntitySet Name="tm_group" EntityType="tooldieliveModel.tm_group" />
+    <EntitySet Name="tm_group_type" EntityType="tooldieliveModel.tm_group_type" />
+    <EntitySet Name="tm_job_cal" EntityType="tooldieliveModel.tm_job_cal" />
+    <EntitySet Name="tm_master_menu" EntityType="tooldieliveModel.tm_master_menu" />
+    <EntitySet Name="tm_rack_mold" EntityType="tooldieliveModel.tm_rack_mold" />
+    <EntitySet Name="tm_rack_part" EntityType="tooldieliveModel.tm_rack_part" />
+    <EntitySet Name="tm_rack_process" EntityType="tooldieliveModel.tm_rack_process" />
+    <EntitySet Name="tm_type" EntityType="tooldieliveModel.tm_type" />
+    <EntitySet Name="tm_user_id" EntityType="tooldieliveModel.tm_user_id" />
+    <EntitySet Name="tr_job_progress" EntityType="tooldieliveModel.tr_job_progress" />
+    <EntitySet Name="tr_job_progress_log" EntityType="tooldieliveModel.tr_job_progress_log" />
+    <EntitySet Name="tr_machine" EntityType="tooldieliveModel.tr_machine" />
+    <EntitySet Name="tr_main_job" EntityType="tooldieliveModel.tr_main_job" />
+    <EntitySet Name="tr_process" EntityType="tooldieliveModel.tr_process" />
+    <EntitySet Name="tr_sub_job" EntityType="tooldieliveModel.tr_sub_job" />
+    <EntitySet Name="ts_process_result" EntityType="tooldieliveModel.ts_process_result" />
+    <EntitySet Name="tt_assy_stat" EntityType="tooldieliveModel.tt_assy_stat" />
+    <EntitySet Name="tt_date_time" EntityType="tooldieliveModel.tt_date_time" />
+    <EntitySet Name="tt_machine_stat" EntityType="tooldieliveModel.tt_machine_stat" />
+  </EntityContainer>
+  <EntityType Name="td_bite_status">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+      <PropertyRef Name="sub_job_no" />
+    </Key>
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="process_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="machine_no" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="status" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="td_comment">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+      <PropertyRef Name="sub_job_no" />
+      <PropertyRef Name="marking_step" />
+    </Key>
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="marking_step" Type="Int32" Nullable="false" />
+    <Property Name="comment_process" Type="String" MaxLength="200" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="td_job_progress">
+    <Key>
+      <PropertyRef Name="transaction_no" />
+    </Key>
+    <Property Name="transaction_no" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="main_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="marking_step" Type="Int32" />
+    <Property Name="process_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="machine_no" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="process_status" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="start_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="start_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="start_user_id" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="start_user_name" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="finished_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="finished_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="finished_user_id" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="finished_user_name" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="transfer_sign" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="status_auto_cal" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="group_no" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="type_est" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="td_user_skill">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="proc_code" />
+    </Key>
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="evaluation" Type="Boolean" Nullable="false" />
+    <Property Name="proc_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="skill_type" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tm_bt_version_ctrl">
+    <Key>
+      <PropertyRef Name="location_cd" />
+      <PropertyRef Name="program_name" />
+    </Key>
+    <Property Name="location_cd" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="true" />
+    <Property Name="program_name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="bt_version" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="upd_server" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tm_cutoff_date">
+    <Key>
+      <PropertyRef Name="cutoff_date" />
+      <PropertyRef Name="cutoff_time" />
+    </Key>
+    <Property Name="cutoff_date" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="cutoff_time" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="cutoff_userid" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="cutoff_username" Type="String" MaxLength="40" Unicode="true" FixedLength="true" />
+    <Property Name="sign" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tm_group">
+    <Key>
+      <PropertyRef Name="group_id" />
+    </Key>
+    <Property Name="group_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="group_name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tm_group_type">
+    <Key>
+      <PropertyRef Name="object_id" />
+    </Key>
+    <Property Name="object_id" Type="Int32" Nullable="false" />
+    <Property Name="product_type_id" Type="Int32" />
+    <Property Name="product_type_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="name" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tm_job_cal">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+    </Key>
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tm_master_menu">
+    <Key>
+      <PropertyRef Name="admin_sign" />
+      <PropertyRef Name="menu_no" />
+    </Key>
+    <Property Name="admin_sign" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="menu_no" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="true" />
+    <Property Name="name_menu" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tm_rack_mold">
+    <Key>
+      <PropertyRef Name="rack_no" />
+    </Key>
+    <Property Name="location_cd" Type="String" MaxLength="3" Unicode="true" FixedLength="true" />
+    <Property Name="proc_code" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="proc_name" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="rack_no" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="true" />
+    <Property Name="main_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="item" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="status_use" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_user" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tm_rack_part">
+    <Key>
+      <PropertyRef Name="transaction_no" />
+    </Key>
+    <Property Name="transaction_no" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="location_cd" Type="String" MaxLength="3" Unicode="true" FixedLength="true" />
+    <Property Name="proc_code" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="proc_name" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="rack_no" Type="String" MaxLength="12" Unicode="true" FixedLength="true" />
+    <Property Name="main_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="item" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="status_use" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_user" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tm_rack_process">
+    <Key>
+      <PropertyRef Name="rack_no" />
+    </Key>
+    <Property Name="rack_no" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="true" />
+    <Property Name="process_code" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="entry_user" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tm_type">
+    <Key>
+      <PropertyRef Name="object_id" />
+    </Key>
+    <Property Name="object_id" Type="Int32" Nullable="false" />
+    <Property Name="group_type_id" Type="Int32" />
+    <Property Name="group_type_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="name" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tm_user_id">
+    <Key>
+      <PropertyRef Name="location_cd" />
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="location_cd" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="true" />
+    <Property Name="group_cd" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="user_id" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="first_name" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="last_name" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="admin_sign" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="pw" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="rank" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="full_name" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="admin_sign_barcode" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tr_job_progress">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+      <PropertyRef Name="sub_job_no" />
+      <PropertyRef Name="marking_step" />
+    </Key>
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="marking_step" Type="Int32" Nullable="false" />
+    <Property Name="process_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="machine_no" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="est_setup_time" Type="Int32" />
+    <Property Name="est_machine_time" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tr_job_progress_log">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+      <PropertyRef Name="sub_job_no" />
+      <PropertyRef Name="marking_step" />
+    </Key>
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="marking_step" Type="Int32" Nullable="false" />
+    <Property Name="process_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="machine_no" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="delete_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="delete_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tr_machine">
+    <Key>
+      <PropertyRef Name="machine_code" />
+      <PropertyRef Name="proc_code" />
+    </Key>
+    <Property Name="machine_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="machine_name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="proc_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tr_main_job">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+    </Key>
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="wo_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="customer_oid" Type="Int32" />
+    <Property Name="customer_name" Type="String" MaxLength="150" Unicode="true" FixedLength="true" />
+    <Property Name="cost_code" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="plant_id" Type="Int32" />
+    <Property Name="plant_code" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="plant_div_name" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="item" Type="String" MaxLength="150" Unicode="true" FixedLength="true" />
+    <Property Name="job_type" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="product_type_code" Type="String" MaxLength="5" Unicode="true" FixedLength="true" />
+    <Property Name="product_type_name" Type="String" MaxLength="150" Unicode="true" FixedLength="true" />
+    <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="unit" Type="String" MaxLength="5" Unicode="true" FixedLength="true" />
+    <Property Name="ref_old_td" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="wo_evaluation" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="due_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="due_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="promise_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="promise_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="issue_job_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="issue_job_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tr_process">
+    <Key>
+      <PropertyRef Name="proc_code" />
+    </Key>
+    <Property Name="proc_code" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="proc_name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="standard_time" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="skip_process_setup" Type="Int32" />
+    <Property Name="skill_type" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+    <Property Name="del_flag" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tr_sub_job">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+      <PropertyRef Name="sub_job_no" />
+    </Key>
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="seq_no" Type="Int32" />
+    <Property Name="item_part_name" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="description" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="unit" Type="String" MaxLength="5" Unicode="true" FixedLength="true" />
+    <Property Name="ref_sub_workorder" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="wo_evaluation" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="rank" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="repair_qty" Type="Int32" />
+    <Property Name="repair_sub_job_oid" Type="Int32" />
+    <Property Name="remark" Type="String" MaxLength="200" Unicode="true" FixedLength="true" />
+    <Property Name="cancel_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="cancel_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="cancel_by" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="group_type_id" Type="Int32" />
+    <Property Name="group_type_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="type_id" Type="Int32" />
+    <Property Name="type_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="issue_job_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="issue_job_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="ts_process_result">
+    <Key>
+      <PropertyRef Name="transaction_no" />
+    </Key>
+    <Property Name="transaction_no" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="main_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="marking_step" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="process_code" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="machine_code" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="update_pgm" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="status" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="start_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="start_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="start_user" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="finished_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="finished_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="finished_user" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="spent_time" Type="Int32" />
+    <Property Name="remark" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="transfer_sign" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="type_est" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tt_assy_stat">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+      <PropertyRef Name="sub_job_no" />
+    </Key>
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="status" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tt_date_time">
+    <Key>
+      <PropertyRef Name="server_date" />
+      <PropertyRef Name="server_time" />
+    </Key>
+    <Property Name="server_date" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="server_time" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="tt_machine_stat">
+    <Key>
+      <PropertyRef Name="main_job_no" />
+      <PropertyRef Name="sub_job_no" />
+      <PropertyRef Name="marking_step" />
+    </Key>
+    <Property Name="process_code" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="machine_no" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="main_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="marking_step" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

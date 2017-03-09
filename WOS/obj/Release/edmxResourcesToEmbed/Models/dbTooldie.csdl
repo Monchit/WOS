@@ -10,7 +10,6 @@
     <EntitySet Name="tm_rack_process" EntityType="tooldietrainModel.tm_rack_process" />
     <EntitySet Name="tm_user_id" EntityType="tooldietrainModel.tm_user_id" />
     <EntitySet Name="tr_job_progress" EntityType="tooldietrainModel.tr_job_progress" />
-    <EntitySet Name="tr_machine" EntityType="tooldietrainModel.tr_machine" />
     <EntitySet Name="tr_main_job" EntityType="tooldietrainModel.tr_main_job" />
     <EntitySet Name="tr_sub_job" EntityType="tooldietrainModel.tr_sub_job" />
     <EntitySet Name="ts_process_result" EntityType="tooldietrainModel.ts_process_result" />
@@ -21,6 +20,7 @@
     <EntitySet Name="tr_job_progress_log" EntityType="tooldietrainModel.tr_job_progress_log" />
     <EntitySet Name="tr_process" EntityType="tooldietrainModel.tr_process" />
     <EntitySet Name="td_user_skill" EntityType="tooldietrainModel.td_user_skill" />
+    <EntitySet Name="tr_machine" EntityType="tooldietrainModel.tr_machine" />
   </EntityContainer>
   <EntityType Name="td_comment">
     <Key>
@@ -153,18 +153,6 @@
     <Property Type="Int32" Name="est_setup_time" />
     <Property Type="Int32" Name="est_machine_time" />
   </EntityType>
-  <EntityType Name="tr_machine">
-    <Key>
-      <PropertyRef Name="machine_code" />
-    </Key>
-    <Property Type="String" Name="machine_code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Type="String" Name="machine_name" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
-    <Property Type="String" Name="proc_code" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="false" />
-    <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="false" />
-    <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
-    <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
-  </EntityType>
   <EntityType Name="tr_main_job">
     <Key>
       <PropertyRef Name="main_job_no" />
@@ -220,6 +208,10 @@
     <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="false" />
     <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="false" />
     <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="group_type_id" />
+    <Property Type="String" Name="group_type_code" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="type_id" />
+    <Property Type="String" Name="type_code" MaxLength="50" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="ts_process_result">
     <Key>
@@ -335,5 +327,18 @@
     <Property Type="String" Name="proc_code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Type="String" Name="skill_type" MaxLength="2" FixedLength="true" Unicode="true" />
     <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tr_machine">
+    <Key>
+      <PropertyRef Name="machine_code" />
+      <PropertyRef Name="proc_code" />
+    </Key>
+    <Property Type="String" Name="machine_code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="machine_name" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="proc_code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="entry_date" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="entry_time" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="update_date" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="update_time" MaxLength="6" FixedLength="true" Unicode="true" />
   </EntityType>
 </Schema>

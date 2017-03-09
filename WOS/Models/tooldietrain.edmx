@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tooldietrainModel1.Store" Alias="Self" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 9.1.7" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="tooldietrainModel1StoreContainer">
+          <EntitySet Name="td_job_progress" EntityType="tooldietrainModel1.Store.td_job_progress" store:Type="Tables" Schema="public" />
+        </EntityContainer>
+        <EntityType Name="td_job_progress">
+          <Key>
+            <PropertyRef Name="transaction_no" />
+          </Key>
+          <Property Name="transaction_no" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="main_job_no" Type="char" MaxLength="20" />
+          <Property Name="sub_job_no" Type="char" MaxLength="20" />
+          <Property Name="marking_step" Type="int" />
+          <Property Name="process_code" Type="char" MaxLength="50" />
+          <Property Name="qty" Type="int" />
+          <Property Name="machine_no" Type="char" MaxLength="10" />
+          <Property Name="entry_date" Type="char" MaxLength="8" />
+          <Property Name="entry_time" Type="char" MaxLength="6" />
+          <Property Name="update_date" Type="char" MaxLength="8" />
+          <Property Name="update_time" Type="char" MaxLength="6" />
+          <Property Name="process_status" Type="char" MaxLength="1" />
+          <Property Name="start_date" Type="char" MaxLength="8" />
+          <Property Name="start_time" Type="char" MaxLength="6" />
+          <Property Name="start_user_id" Type="char" MaxLength="6" />
+          <Property Name="start_user_name" Type="char" MaxLength="50" />
+          <Property Name="finished_date" Type="char" MaxLength="8" />
+          <Property Name="finished_time" Type="char" MaxLength="6" />
+          <Property Name="finished_user_id" Type="char" MaxLength="6" />
+          <Property Name="finished_user_name" Type="char" MaxLength="50" />
+          <Property Name="transfer_sign" Type="char" MaxLength="1" />
+          <Property Name="status_auto_cal" Type="char" MaxLength="1" />
+          <Property Name="group_no" Type="char" MaxLength="10" />
+          <Property Name="type_est" Type="char" MaxLength="2" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tooldietrainModel1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="tooldietrainEntities1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="td_job_progress" EntityType="tooldietrainModel1.td_job_progress" />
+        </EntityContainer>
+        <EntityType Name="td_job_progress">
+          <Key>
+            <PropertyRef Name="transaction_no" />
+          </Key>
+          <Property Name="transaction_no" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="main_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+          <Property Name="sub_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+          <Property Name="marking_step" Type="Int32" />
+          <Property Name="process_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="qty" Type="Int32" />
+          <Property Name="machine_no" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+          <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+          <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="process_status" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+          <Property Name="start_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+          <Property Name="start_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="start_user_id" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="start_user_name" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="finished_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+          <Property Name="finished_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="finished_user_id" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="finished_user_name" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="transfer_sign" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+          <Property Name="status_auto_cal" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+          <Property Name="group_no" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="type_est" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tooldietrainModel1StoreContainer" CdmEntityContainer="tooldietrainEntities1">
+          <EntitySetMapping Name="td_job_progress">
+            <EntityTypeMapping TypeName="tooldietrainModel1.td_job_progress">
+              <MappingFragment StoreEntitySet="td_job_progress">
+                <ScalarProperty Name="transaction_no" ColumnName="transaction_no" />
+                <ScalarProperty Name="main_job_no" ColumnName="main_job_no" />
+                <ScalarProperty Name="sub_job_no" ColumnName="sub_job_no" />
+                <ScalarProperty Name="marking_step" ColumnName="marking_step" />
+                <ScalarProperty Name="process_code" ColumnName="process_code" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="machine_no" ColumnName="machine_no" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="process_status" ColumnName="process_status" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="start_user_id" ColumnName="start_user_id" />
+                <ScalarProperty Name="start_user_name" ColumnName="start_user_name" />
+                <ScalarProperty Name="finished_date" ColumnName="finished_date" />
+                <ScalarProperty Name="finished_time" ColumnName="finished_time" />
+                <ScalarProperty Name="finished_user_id" ColumnName="finished_user_id" />
+                <ScalarProperty Name="finished_user_name" ColumnName="finished_user_name" />
+                <ScalarProperty Name="transfer_sign" ColumnName="transfer_sign" />
+                <ScalarProperty Name="status_auto_cal" ColumnName="status_auto_cal" />
+                <ScalarProperty Name="group_no" ColumnName="group_no" />
+                <ScalarProperty Name="type_est" ColumnName="type_est" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

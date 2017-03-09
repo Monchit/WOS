@@ -39,5 +39,7 @@ namespace WOS.Models
         public string entry_time { get; set; }
         public string update_date { get; set; }
         public string update_time { get; set; }
+        public string issue_job_date { get; set; }
+        public string issue_job_time { get; set; }
     }
 }

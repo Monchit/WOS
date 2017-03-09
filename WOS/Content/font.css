@@ -1,0 +1,6 @@
+﻿@import url('CenturyGothic/styles.css');
+
+html {
+	font-family: 'century-gothic', Helvetica, Arial, sans-serif;
+	line-height: 1.125em; /* 18/16 */
+}

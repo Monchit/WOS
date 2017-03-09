@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tooldietrainModel1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="tooldietrainEntities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="td_job_progress" EntityType="tooldietrainModel1.td_job_progress" />
+  </EntityContainer>
+  <EntityType Name="td_job_progress">
+    <Key>
+      <PropertyRef Name="transaction_no" />
+    </Key>
+    <Property Name="transaction_no" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="main_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="sub_job_no" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="marking_step" Type="Int32" />
+    <Property Name="process_code" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="machine_no" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="entry_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="entry_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="update_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="update_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="process_status" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="start_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="start_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="start_user_id" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="start_user_name" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="finished_date" Type="String" MaxLength="8" Unicode="true" FixedLength="true" />
+    <Property Name="finished_time" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="finished_user_id" Type="String" MaxLength="6" Unicode="true" FixedLength="true" />
+    <Property Name="finished_user_name" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="transfer_sign" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="status_auto_cal" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="group_no" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="type_est" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+  </EntityType>
+</Schema>

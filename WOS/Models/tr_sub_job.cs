@@ -38,5 +38,7 @@ namespace WOS.Models
         public string group_type_code { get; set; }
         public Nullable<int> type_id { get; set; }
         public string type_code { get; set; }
+        public string issue_job_date { get; set; }
+        public string issue_job_time { get; set; }
     }
 }

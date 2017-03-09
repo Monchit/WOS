@@ -22,7 +22,7 @@ namespace WOS.Controllers
 {
     public class HomeController : Controller
     {
-        tooldietrainEntities dbTooldie = new tooldietrainEntities();
+        tooldieliveEntities dbTooldie = new tooldieliveEntities();
         TNCUtility util = new TNCUtility();
         TNCConversion conv = new TNCConversion();
         CultureInfo culture = new CultureInfo("ru-RU");
@@ -56,7 +56,7 @@ namespace WOS.Controllers
                          {
                              b.main_job_no,
                              b.ref_old_td,
-                             b.entry_date,
+                             //b.entry_date,
                              s.sub_job_no,
                              s.ref_sub_workorder,
                              b.wo_no,
@@ -64,8 +64,10 @@ namespace WOS.Controllers
                              a.marking_step,
                              c.proc_name,
                              g.process_status,
-                             g.start_date
-                         }).GroupBy(g => new { g.main_job_no, g.sub_job_no, g.ref_old_td, g.ref_sub_workorder, g.wo_no, g.product_type_name, g.entry_date })
+                             g.start_date,
+                             b.promise_date//Add 2016-08-17 by Monchit W.
+                         }).GroupBy(g => new { g.main_job_no, g.sub_job_no, g.ref_old_td, g.ref_sub_workorder, g.wo_no, g.product_type_name
+                             , g.promise_date })//, g.entry_date change to g.promise_date
                          .Select(s => new
                          {
                              s.Key.main_job_no,
@@ -74,7 +76,8 @@ namespace WOS.Controllers
                              s.Key.ref_sub_workorder,
                              s.Key.wo_no,
                              s.Key.product_type_name,
-                             s.Key.entry_date,
+                             //s.Key.entry_date, //change to promise_date
+                             s.Key.promise_date,
                              //percent = (s.Where(w => w.process_status != null && w.process_status.Trim() == "Y").Count() / (double)s.Count()) * 100,
                              process = s.Select(se => new
                              {
@@ -88,75 +91,82 @@ namespace WOS.Controllers
 
             if (!string.IsNullOrEmpty(txtMainJob))
             {
-                query = query.Where(w => w.main_job_no.Trim() == txtMainJob.Trim().ToUpper());
+                query = query.Where(w => w.main_job_no == txtMainJob.ToUpper());
+                //query = query.Where(w => w.main_job_no.Trim() == txtMainJob.Trim().ToUpper());
             }
 
             if (!string.IsNullOrEmpty(selProductType))
             {
-                query = query.Where(w => w.product_type_name.Trim() == selProductType.Trim());
+                query = query.Where(w => w.product_type_name == selProductType);
+                //query = query.Where(w => w.product_type_name.Trim() == selProductType.Trim());
             }
 
             if (!string.IsNullOrEmpty(txtMainWO))
             {
-                query = query.Where(w => w.wo_no.Trim() == txtMainWO.Trim().ToUpper());
+                query = query.Where(w => w.wo_no == txtMainWO.ToUpper());
+                //query = query.Where(w => w.wo_no.Trim() == txtMainWO.Trim().ToUpper());
             }
 
             if (!string.IsNullOrEmpty(txtOldTD))
             {
-                query = query.Where(w => w.ref_old_td.Trim() == txtOldTD.Trim().ToUpper());
+                query = query.Where(w => w.ref_old_td == txtOldTD.ToUpper());
+                //query = query.Where(w => w.ref_old_td.Trim() == txtOldTD.Trim().ToUpper());
             }
 
             if (!string.IsNullOrEmpty(txtDateFrom) && !string.IsNullOrEmpty(txtDateTo))
             {
                 var from = ToPGDateFormat(txtDateFrom);
                 var to = ToPGDateFormat(txtDateTo);
-                query = query.Where(w => w.entry_date.CompareTo(from) >= 0 && w.entry_date.CompareTo(to) <= 0);
+                //query = query.Where(w => w.entry_date.CompareTo(from) >= 0 && w.entry_date.CompareTo(to) <= 0);
+                query = query.Where(w => w.promise_date.CompareTo(from) >= 0 && w.promise_date.CompareTo(to) <= 0);
             }
 
+            ViewBag.Query = query.ToString();
+
             return Json(query, JsonRequestBehavior.AllowGet);
-
-            //var job = dbTooldie.tr_main_job.AsQueryable();
-
-            //if (!string.IsNullOrEmpty(txtMainJob))
-            //{
-            //    job = job.Where(w => w.main_job_no.Trim() == txtMainJob.Trim().ToUpper());
-            //}
-
-            //if (!string.IsNullOrEmpty(selProductType))
-            //{
-            //    job = job.Where(w => w.product_type_name.Trim() == selProductType.Trim());
-            //}
-
-            //if (!string.IsNullOrEmpty(txtMainWO))
-            //{
-            //    job = job.Where(w => w.wo_no.Trim() == txtMainWO.Trim());
-            //}
-
-            //if (!string.IsNullOrEmpty(txtOldTD))
-            //{
-            //    job = job.Where(w => w.ref_old_td.Trim() == txtOldTD.Trim());
-            //}
-
-            
-            //var query = (from a in job
-            //             join s in dbTooldie.tr_sub_job
-            //             on a.main_job_no equals s.main_job_no
-            //             select new
-            //             {
-            //                 a.main_job_no,
-            //                 s.sub_job_no,
-            //                 s.ref_sub_workorder
-            //             }).OrderBy(o => o.main_job_no).ThenBy(o => o.sub_job_no);
-
-            //if (query.Any())
-            //{
-            //    return Json(query, JsonRequestBehavior.AllowGet);
-            //}
-            //else
-            //{
-            //    return Json(0, JsonRequestBehavior.AllowGet);
-            //}
         }
+        //Code of GetWoStatus
+        //var job = dbTooldie.tr_main_job.AsQueryable();
+
+        //if (!string.IsNullOrEmpty(txtMainJob))
+        //{
+        //    job = job.Where(w => w.main_job_no.Trim() == txtMainJob.Trim().ToUpper());
+        //}
+
+        //if (!string.IsNullOrEmpty(selProductType))
+        //{
+        //    job = job.Where(w => w.product_type_name.Trim() == selProductType.Trim());
+        //}
+
+        //if (!string.IsNullOrEmpty(txtMainWO))
+        //{
+        //    job = job.Where(w => w.wo_no.Trim() == txtMainWO.Trim());
+        //}
+
+        //if (!string.IsNullOrEmpty(txtOldTD))
+        //{
+        //    job = job.Where(w => w.ref_old_td.Trim() == txtOldTD.Trim());
+        //}
+
+
+        //var query = (from a in job
+        //             join s in dbTooldie.tr_sub_job
+        //             on a.main_job_no equals s.main_job_no
+        //             select new
+        //             {
+        //                 a.main_job_no,
+        //                 s.sub_job_no,
+        //                 s.ref_sub_workorder
+        //             }).OrderBy(o => o.main_job_no).ThenBy(o => o.sub_job_no);
+
+        //if (query.Any())
+        //{
+        //    return Json(query, JsonRequestBehavior.AllowGet);
+        //}
+        //else
+        //{
+        //    return Json(0, JsonRequestBehavior.AllowGet);
+        //}
 
         public ActionResult GetMasterProcess(string mainJob, string subJob)
         {
@@ -189,13 +199,21 @@ namespace WOS.Controllers
         public double GetExportProgressive(string mainjob, string subjob)
         {
             var total = (from b in dbTooldie.tr_job_progress
-                         where b.main_job_no.Trim() == mainjob.Trim() && b.sub_job_no.Trim() == subjob.Trim()
+                         where b.main_job_no == mainjob && b.sub_job_no == subjob
                          select b).Count();
+            //var total = (from b in dbTooldie.tr_job_progress
+            //             where b.main_job_no.Trim() == mainjob.Trim() && b.sub_job_no.Trim() == subjob.Trim()
+            //             select b).Count();
             var comp = (from a in dbTooldie.td_job_progress
-                        where a.main_job_no.Trim() == mainjob.Trim() && a.sub_job_no.Trim() == subjob.Trim()
-                        && a.process_status.Trim() == "Y"
+                        where a.main_job_no == mainjob && a.sub_job_no == subjob
+                        && a.process_status == "Y"
                         group a by a.marking_step into g
                         select g.Key).Count();
+            //var comp = (from a in dbTooldie.td_job_progress
+            //            where a.main_job_no.Trim() == mainjob.Trim() && a.sub_job_no.Trim() == subjob.Trim()
+            //            && a.process_status.Trim() == "Y"
+            //            group a by a.marking_step into g
+            //            select g.Key).Count();
 
             double percent;
 
@@ -211,29 +229,34 @@ namespace WOS.Controllers
 
             if (!string.IsNullOrEmpty(txtMainJob))
             {
-                job = job.Where(w => w.main_job_no.Trim() == txtMainJob.Trim());
+                job = job.Where(w => w.main_job_no == txtMainJob);
+                //job = job.Where(w => w.main_job_no.Trim() == txtMainJob.Trim());
             }
 
             if (!string.IsNullOrEmpty(selProductType))
             {
-                job = job.Where(w => w.product_type_name.Trim() == selProductType.Trim());
+                job = job.Where(w => w.product_type_name == selProductType);
+                //job = job.Where(w => w.product_type_name.Trim() == selProductType.Trim());
             }
 
             if (!string.IsNullOrEmpty(txtDateFrom) && !string.IsNullOrEmpty(txtDateTo))
             {
                 var from = ToPGDateFormat(txtDateFrom);
                 var to = ToPGDateFormat(txtDateTo);
-                job = job.Where(w => w.entry_date.CompareTo(from) >= 0 && w.entry_date.CompareTo(to) <= 0);
+                job = job.Where(w => w.promise_date.CompareTo(from) >= 0 && w.promise_date.CompareTo(to) <= 0);
+                //job = job.Where(w => w.entry_date.CompareTo(from) >= 0 && w.entry_date.CompareTo(to) <= 0);
             }
 
             if (!string.IsNullOrEmpty(txtMainWO))
             {
-                job = job.Where(w => w.wo_no.Trim() == txtMainWO.Trim());
+                job = job.Where(w => w.wo_no == txtMainWO);
+                //job = job.Where(w => w.wo_no.Trim() == txtMainWO.Trim());
             }
 
             if (!string.IsNullOrEmpty(txtOldTD))
             {
-                job = job.Where(w => w.ref_old_td.Trim() == txtOldTD.Trim());
+                job = job.Where(w => w.ref_old_td == txtOldTD);
+                //job = job.Where(w => w.ref_old_td.Trim() == txtOldTD.Trim());
             }
 
             var query = (from a in job
@@ -256,13 +279,12 @@ namespace WOS.Controllers
             //var todayInt = int.Parse((DateTime.Now.Year) + DateTime.Now.ToString("MMdd"));
             foreach (var item in query)
             {
-
                 // Progressive
                 var progressive = GetExportProgressive(item.main_job_no, item.sub_job_no);
                 // Process Master
                 var processMaster = (from a in dbTooldie.tr_job_progress
-                        .Where(w => w.main_job_no.Trim() == item.main_job_no.Trim() && w.sub_job_no.Trim() == item.sub_job_no.Trim())
-                                     join c in dbTooldie.tr_process on a.process_code.Trim() equals c.proc_code.Trim() into p
+                        .Where(w => w.main_job_no == item.main_job_no && w.sub_job_no == item.sub_job_no)
+                                     join c in dbTooldie.tr_process on a.process_code equals c.proc_code into p
                                      from c in p.DefaultIfEmpty()
                                      //join g in (dbTooldie.td_job_progress.GroupBy(g => new { g.main_job_no, g.sub_job_no, g.marking_step }).Select(s => new { s.Key.main_job_no, s.Key.sub_job_no, marking_step = s.Key.marking_step.Value, process_status = s.Max(m => m.process_status), start_date = s.Min(m => m.start_date) })) on new { a.main_job_no, a.sub_job_no, a.marking_step } equals new { g.main_job_no, g.sub_job_no, g.marking_step } into q
                                      join g in (dbTooldie.td_job_progress.GroupBy(g => new { g.main_job_no, g.sub_job_no, g.marking_step }).Select(s => new { s.Key.main_job_no, s.Key.sub_job_no, marking_step = s.Key.marking_step.Value, process_status = s.Max(m => m.process_status) })) on new { a.main_job_no, a.sub_job_no, a.marking_step } equals new { g.main_job_no, g.sub_job_no, g.marking_step } into q
@@ -283,7 +305,7 @@ namespace WOS.Controllers
                 row.Add(item.main_job_no.Trim());
                 row.Add(item.sub_job_no.Trim());
                 row.Add(item.ref_sub_workorder.Trim());
-                row.Add(item.product_type_name);
+                row.Add(item.product_type_name.Trim());
                 row.Add(processMaster.Count());
                 row.Add(progressive > 0 ? Math.Round(progressive, 2) + "%" : "0.00%");
 
@@ -401,7 +423,6 @@ namespace WOS.Controllers
             {
                 header.Add("Process" + i);
             }
-
 
             util.ModifyExcel("Stuff", "BogyTemplate.xlsx", null, data.AsEnumerable(), header);
         }
